@@ -82,7 +82,6 @@ const LoginBarbeiro = () => {
                                 <></>
                             )
                     }
-
                     <NextButton type="submit" onClick={() => handleSubmit()}>Entrar</NextButton>
                     <TextRegister>Não possui conta? <LinkA onClick={() => handleRegister()}>Cadastre-se</LinkA></TextRegister>
                 </Form>

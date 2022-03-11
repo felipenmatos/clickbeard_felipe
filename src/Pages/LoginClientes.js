@@ -33,7 +33,7 @@ const LoginClientes = () => {
     }
 
     function handleRegister() {
-        navigate("/CadastroClientes")
+        navigate("/CadastroCliente1")
     }
     
     return (
