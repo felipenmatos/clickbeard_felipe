@@ -72,6 +72,7 @@ const LoginBarbeiro = () => {
                     onChange={e => setPassword(e.target.value)}
                     type={showPassword ? "text" : "password"}
                     placeholder="Digite sua senha"
+                    maxLength={50}
                     />
                     {error ? (
                             <ErrorText className="Error">

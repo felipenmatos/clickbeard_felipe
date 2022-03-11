@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Navbar from "../Componentes/Navbar";
 import Background1 from "../assets/background.jpg";
 import Mostrar from "../assets/icons/mostrar.svg";
 import Ocultar from "../assets/icons/ocultar.svg";
+import NavbarClientes from "../Componentes/NavbarClientes";
 
 const LoginClientes = () => {
     const [error, setError] = useState(false);
@@ -33,12 +33,12 @@ const LoginClientes = () => {
     }
 
     function handleRegister() {
-        navigate("/CadastroBarbeiro")
+        navigate("/CadastroClientes")
     }
     
     return (
         <Container style={{backgroundImage: `url(${Background1})`}}>
-            <Navbar />
+            <NavbarClientes />
             <DivLogin>
                 <Form onSubmit={handleSubmit}>
                     <Text>Faça seu login</Text>
@@ -83,8 +83,11 @@ const LoginClientes = () => {
                     }
 
                     <NextButton type="submit" onClick={() => handleSubmit()}>Entrar</NextButton>
-                    <TextRegister>Não possui conta? <LinkA onClick={() => handleRegister()}>Cadastre-se</LinkA></TextRegister>
                 </Form>
+                <DivRegister>
+                    <TextRegisterClient>Não possui cadastro?</TextRegisterClient>
+                    <ButtonRegisterClient type="submit" onClick={() => handleRegister()}>Cadastre-se</ButtonRegisterClient>
+                </DivRegister>
             </DivLogin>
         </Container>
     )
@@ -103,12 +106,12 @@ const Container = styled.div`
 `;
 
 const DivLogin = styled.div`
-    width: 50%;
+    width: 60%;
     height: 80%;
     margin-top: 60px;
-    margin-left: 300px;
+    margin-left: 220px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 `;
 
@@ -173,16 +176,25 @@ const IMG = styled.img`
     cursor: pointer;
 `;
 
-const TextRegister = styled.p`
+const DivRegister = styled.div`
+    display: flex;
+    flex-direction:column ;
+`;
+
+const TextRegisterClient = styled.h1`
     color: #FFF;
 `;
 
-const LinkA = styled.button`
-    color: red;
-    text-decoration: underline;
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
+const ButtonRegisterClient = styled.button`
+    width: 200px;
+    height: 30px;
+    margin-left: 40px;
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.8);
+    font-size: 16px;
     border: 0px;
+    border-radius: 16px;
+    cursor: pointer;
 `;
 
 export default LoginClientes;

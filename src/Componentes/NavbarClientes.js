@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Navbar = () => {
+const NavbarClientes = () => {
 
     return (
         <Div>
             <Text>ClickBeard</Text>
-            <Link to="/LoginClientes">
-                <Button>Entrar como Cliente</Button>
+            <Link to="/">
+                <Button>Entrar como Administrador</Button>
             </Link>
         </Div>
     )
@@ -40,4 +40,4 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-export default Navbar;
+export default NavbarClientes;
