@@ -30,7 +30,7 @@ const Text = styled.h1`
 `;
 
 const Button = styled.button`
-    width: 200px;
+    width: 120px;
     height: 30px;
     margin-top: 25px;
     margin-right: 25px;
@@ -41,6 +41,10 @@ const Button = styled.button`
     border: 0px;
     border-radius: 16px;
     cursor: pointer;
+
+    :hover {
+        background: rgb(135, 75, 15, 0.9);
+    }
 `;
 
 export default NavbarHome;
