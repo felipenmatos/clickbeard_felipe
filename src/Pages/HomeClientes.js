@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import List from "../Componentes/List";
 import NavbarHome from "../Componentes/NavbarHome";
 
 const HomeClientes = () => {
@@ -10,7 +11,7 @@ const HomeClientes = () => {
         <Container>
             <NavbarHome />
             <Main>
-
+                <List />
             </Main>
         </Container>
     )

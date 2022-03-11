@@ -36,14 +36,14 @@ const Button = styled.button`
     margin-right: 25px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
-    color: #FFF;
-    background: rgb(135, 75, 15, 0.7);
+    color: #fff;
+    background: #696969;
     border: 0px;
     border-radius: 16px;
     cursor: pointer;
 
     :hover {
-        background: rgb(135, 75, 15, 0.9);
+        background: rgb(69, 69, 69, 0.9);
     }
 `;
 
