@@ -18,7 +18,6 @@ function TableHeader(){
     return (
         <TableHead>
             <ColumnTitle
-            className='column-title cursor-pointer'
             onClick={() => handleChangeFilter('date')}
             >
                 <Span>Barbeiro</Span>
@@ -27,10 +26,9 @@ function TableHeader(){
                 
                 alt='ordenar'
                 />
-                }
+            }
             </ColumnTitle>
             <ColumnTitle 
-            className='column-title cursor-pointer'
             onClick={() => handleChangeFilter('weekDay')}
             >
                 <Span>Data</Span>
@@ -39,16 +37,15 @@ function TableHeader(){
                  
                 alt='ordenar'
                 />
-                }
+            }
             </ColumnTitle>
-            <ColumnTitle className='column-title'>
+            <ColumnTitle>
                 <Span>Horário</Span>
             </ColumnTitle>
-            <ColumnTitle className='column-title'>
+            <ColumnTitle>
                 <Span>Serviço</Span>
             </ColumnTitle>
             <ColumnTitle 
-            className='column-title cursor-pointer'
             onClick={() => handleChangeFilter('value')}
             >
                 <Span>Valor</Span>
@@ -57,7 +54,7 @@ function TableHeader(){
                  
                 alt='ordenar'
                 />
-                }
+            }
             </ColumnTitle>
         </TableHead>
     )
@@ -80,14 +77,12 @@ const ColumnTitle = styled.div`
     justify-content: center;
     height: 45px;
     width: 150px;
+
+    cursor: pointer;
 `;
 
 const Span = styled.span`
     margin-right: 5px;
 `;
-
-
-
-
 
 export default TableHeader;

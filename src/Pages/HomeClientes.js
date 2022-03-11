@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Agendamento from "../Componentes/Agendamento/Agendamento";
 import List from "../Componentes/List";
 import NavbarHome from "../Componentes/NavbarHome";
 
@@ -12,6 +13,9 @@ const HomeClientes = () => {
             <NavbarHome />
             <Main>
                 <List />
+                <ContainerAgendar>
+                    <Agendamento />
+                </ContainerAgendar>
             </Main>
         </Container>
     )
@@ -34,5 +38,7 @@ const Main = styled.div`
     margin-top: 80px;
     padding: 50px 90px;
 `;
+
+const ContainerAgendar = styled.div``;
 
 export default HomeClientes;
