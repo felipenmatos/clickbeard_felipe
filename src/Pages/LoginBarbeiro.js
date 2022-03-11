@@ -50,6 +50,15 @@ const LoginBarbeiro = () => {
                     placeholder="Digite seu e-mail"
                     maxLength={100}
                     />
+                    
+                    <Label>Senha</Label>
+                    <InputPassword
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Digite sua senha"
+                    maxLength={50}
+                    />
                     {showPassword ? 
                         (
                         <IMG 
@@ -66,14 +75,6 @@ const LoginBarbeiro = () => {
                         onClick={handleClickPassword}
                         />
                         )}
-                    <Label>Senha</Label>
-                    <InputPassword
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Digite sua senha"
-                    maxLength={50}
-                    />
                     {error ? (
                             <ErrorText className="Error">
                                 Dados não conferem! É preciso estar cadastrado.
@@ -120,13 +121,22 @@ const Form = styled.form`
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 16px;
+    transition: all 0.5s;
+
+    :hover {
+    -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
 `;
 
 const Text = styled.h1`
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
     color: #fff;
 `;
 
 const Label = styled.label`
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
     color: #fff;
     margin-top: 20px;
     margin-left: -240px;
@@ -147,9 +157,11 @@ const InputPassword = styled.input`
 `;
 
 const ErrorText = styled.p`
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
     color: red;
-    font-size: 15px;
-    margin-top: 7px;
+    font-size: 13px;
+    margin-top: 8px;
     margin-bottom: -24px;
 `;
 
@@ -157,6 +169,7 @@ const NextButton = styled.button`
     width: 180px;
     height: 30px;
     margin-top: 40px;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 15px;
     border-radius: 10px;
     border: 0px;
@@ -164,20 +177,22 @@ const NextButton = styled.button`
 `;
 
 const IMG = styled.img`
-    margin-top: 217px;
+    margin-top: -27px;
     margin-bottom: 10px;
-    margin-left: 120px;
+    margin-left: 230px;
     width: 20px;
     height: 20px;
-    position: fixed;
+    position: relative;
     cursor: pointer;
 `;
 
 const TextRegister = styled.p`
+    font-family: 'Ubuntu', sans-serif;
     color: #FFF;
 `;
 
 const LinkA = styled.button`
+    font-family: 'Ubuntu', sans-serif;
     color: red;
     text-decoration: underline;
     background-color: rgba(0, 0, 0, 0);

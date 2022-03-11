@@ -48,6 +48,14 @@ const CadastroCliente3 = () => {
             <DivLogin>
                 <Form onSubmit={handleSubmit}>
                     <Text>Crie uma senha</Text>
+                    <Label>Senha</Label>
+                    <InputEmail
+                    value={password}
+                    onChange={e => setPassword(e.target.value)} 
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Digite a senha"
+                    maxLength={80}
+                    />
                     {showPassword ? 
                         (
                         <IMG1 
@@ -64,11 +72,11 @@ const CadastroCliente3 = () => {
                         onClick={handleClickPassword}
                         />
                     )}
-                    <Label>Senha</Label>
+                    <Label2>Repita a Senha</Label2>
                     <InputEmail
-                    value={password}
-                    onChange={e => setPassword(e.target.value)} 
-                    type={showPassword ? "text" : "password"}
+                    value={passwordRepeat}
+                    onChange={e => setPasswordRepeat(e.target.value)} 
+                    type={showRepeat ? "text" : "password"}
                     placeholder="Digite a senha"
                     maxLength={80}
                     />
@@ -88,14 +96,6 @@ const CadastroCliente3 = () => {
                         onClick={handleRepeat}
                         />
                     )}
-                    <Label2>Repita a Senha</Label2>
-                    <InputEmail
-                    value={passwordRepeat}
-                    onChange={e => setPasswordRepeat(e.target.value)} 
-                    type={showRepeat ? "text" : "password"}
-                    placeholder="Digite a senha"
-                    maxLength={80}
-                    />
                     {error ? (
                             <ErrorText className="Error">
                                 As senhas devem ser iguais.
@@ -146,22 +146,33 @@ const Form = styled.form`
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 16px;
+    transition: all 0.5s;
+
+    :hover {
+    -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
 `;
 
 const Text = styled.h1`
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
     color: #fff;
 `;
 
 const Label = styled.label`
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
     color: #fff;
     margin-top: 20px;
     margin-left: -240px;
 `;
 
 const Label2 = styled.label`
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
     color: #fff;
     margin-top: 20px;
-    margin-left: -190px;
+    margin-left: -180px;
 `;
 
 const InputEmail = styled.input`
@@ -172,6 +183,8 @@ const InputEmail = styled.input`
 `;
 
 const ErrorText = styled.p`
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
     color: red;
     font-size: 15px;
     margin-top: 7px;
@@ -189,22 +202,22 @@ const NextButton = styled.button`
 `;
 
 const IMG1 = styled.img`
-    margin-top: 137px;
+    margin-top: -27px;
     margin-bottom: 10px;
-    margin-left: 120px;
+    margin-left: 230px;
     width: 20px;
     height: 20px;
-    position: fixed;
+    position: relative;
     cursor: pointer;
 `;
 
 const IMG = styled.img`
-    margin-top: 217px;
+    margin-top: -27px;
     margin-bottom: 10px;
-    margin-left: 120px;
+    margin-left: 230px;
     width: 20px;
     height: 20px;
-    position: fixed;
+    position: relative;
     cursor: pointer;
 `;
 
@@ -214,6 +227,8 @@ const DivRegister = styled.div`
 `;
 
 const TextRegisterClient = styled.h1`
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
     color: #FFF;
 `;
 
@@ -221,12 +236,18 @@ const ButtonRegisterClient = styled.button`
     width: 200px;
     height: 30px;
     margin-left: 17px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
     color: #FFF;
     background: rgba(0, 0, 0, 0.8);
     font-size: 16px;
     border: 0px;
     border-radius: 16px;
     cursor: pointer;
+
+    :hover {
+        background: rgba(0, 0, 0, 0.9);
+    }
 `;
 
 export default CadastroCliente3;
