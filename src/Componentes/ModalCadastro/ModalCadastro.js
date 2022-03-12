@@ -1,31 +1,24 @@
 import React, { useState } from "react";
-import InputMask from "react-input-mask";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import close from '../../assets/icons/close-icon.svg';
 
 const ModalCadastro = ({open, setOpen}) => {
     const [nomeBarbeiro, setNomeBarbeiro] = useState("");
-    const [nomeCliente, setNomeCliente] = useState("");
     const [servico, setServico] = useState("");
-    const [horario, setHorario] = useState("");
-    const [data, setData] = useState("");
     const [errorHorario, setErrorHorario] = useState(false);
-    console.log(data)
 
-    const navigate = useNavigate()
+    //const navigate = useNavigate()
     const handleSubmit = async (event) => {
         setNomeBarbeiro(event.target.value)
-        setNomeCliente(event.target.value)
-        setServico(event.target.value)
-        setHorario(event.target.value)
-        setData(event.target.value)
 
+        /*
         if(nomeCliente.value === 0) {
             setErrorHorario(true)
         } else {
             navigate("/HomeClientes")
         }
+        */
 
         /*if(horario.value < "08:00" || horario.value > "18:00") {
             setErrorHorario(true)
@@ -47,7 +40,7 @@ const ModalCadastro = ({open, setOpen}) => {
                         onClick={() => setOpen(false)} 
                     />
                     <Label>Nome</Label>
-                    <InputName type="text" />
+                    <InputName value={nomeBarbeiro} type="text" />
                     <Label>Especialidade</Label>
                     <DivServicos>
                         <DivSelect>
