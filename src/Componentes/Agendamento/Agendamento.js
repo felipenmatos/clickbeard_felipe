@@ -1,17 +1,17 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import ModalAgendamento from "../ModalAgendamento/Modal";
+import ModalAgendamento from "../ModalAgendamento/ModalAgendamento";
 
-function Agendamento(){
+const Agendamento = () => {
     const [open, setOpen] = useState(true);
 
     return (
         <ContainerAgendamento>
             <TextAgendar>Agendamento Aqui</TextAgendar>
-            <ButtonAgendar className='btn-insert-register'>
-            Agendar Horário
+            <ButtonAgendar>
+                Agendar Horário
             </ButtonAgendar>
-            {open && <ModalAgendamento />}
+            {open && <ModalAgendamento/>}
         </ContainerAgendamento>
     )
 };
@@ -37,7 +37,7 @@ const TextAgendar = styled.div`
     margin-top: 20px;
 `;
 
-const ButtonAgendar = styled.div`
+const ButtonAgendar = styled.button`
     display: flex;
     align-items: center;
     text-align: center;

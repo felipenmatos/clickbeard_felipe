@@ -4,9 +4,7 @@ import Agendamento from "../Componentes/Agendamento/Agendamento";
 import List from "../Componentes/List";
 import NavbarHome from "../Componentes/NavbarHome";
 
-const HomeClientes = () => {
-    
-    
+function HomeClientes() {
     
     return (
         <Container>
