@@ -5,12 +5,16 @@ import Background1 from "../assets/background.jpg";
 import Mostrar from "../assets/icons/mostrar.svg";
 import Ocultar from "../assets/icons/ocultar.svg";
 import NavbarClientes from "../Componentes/NavbarClientes";
+import { useHook } from "../Context/state";
 
 const LoginClientes = () => {
     const [error, setError] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [emailLogin, setEmailLogin] = useState("");
+    const [passwordLogin, setPasswordLogin] = useState("");
+    const { userContext } = useHook();
+    const {email, password} = userContext;
+    console.log(email)
 
     const handleClickPassword = (e) => {
         e.preventDefault()
@@ -21,11 +25,11 @@ const LoginClientes = () => {
     function handleSubmit(event) {
         event.preventDefault();
 
-        if(password.length === 0 || email.length === 0) {
+        if(passwordLogin.length === 0 || emailLogin.length === 0 || passwordLogin !== password || emailLogin !== email) {
             setError(true)
-        } else if (!email.includes("@")) {
+        } else if (!emailLogin.includes("@")) {
             setError(true)
-        } else if (!email.includes(".com")) {
+        } else if (!emailLogin.includes(".com")) {
             setError(true)
         } else {
             navigate("/HomeClientes");
@@ -44,8 +48,8 @@ const LoginClientes = () => {
                     <Text>Faça seu login</Text>
                     <Label>E-mail</Label>
                     <InputEmail
-                    value={email}
-                    onChange={e => setEmail(e.target.value)} 
+                    value={emailLogin}
+                    onChange={e => setEmailLogin(e.target.value)} 
                     type="text"
                     placeholder="Digite seu e-mail"
                     maxLength={100}
@@ -53,8 +57,8 @@ const LoginClientes = () => {
                     
                     <Label>Senha</Label>
                     <InputPassword
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    value={passwordLogin}
+                    onChange={e => setPasswordLogin(e.target.value)}
                     type={showPassword ? "text" : "password"}
                     placeholder="Digite sua senha"
                     />
