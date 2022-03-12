@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import ModalAgendamento from "../ModalAgendamento/ModalAgendamento";
+import ModalAgendamento from "../ModalAgendamento/ModalAgendamento.js";
 
 const Agendamento = () => {
     const [open, setOpen] = useState(true);

@@ -6,20 +6,43 @@ const ModalAgendamento = () => {
     const [nomeBarbeiro, setNomeBarbeiro] = useState("");
     const [nomeCliente, setNomeCliente] = useState("");
     const [servico, setServico] = useState("");
-    const [horario, setHorario] = useState("");
+    const [horario, setHorario] = useState("0:00");
     const [data, setData] = useState("");
+    const [errorHorario, setErrorHorario] = useState(false);
+
+    const handleSubmit = async (event) => {
+        console.log(nomeBarbeiro.value)
+        console.log(nomeCliente.value)
+        console.log(servico.value)
+        console.log(horario.value)
+        console.log(data.value)
+        setHorario(event.target.value)
+
+        if(nomeBarbeiro.value === "" || nomeCliente.value === "" || servico.value === "" || horario.value === "" || data.value === "") {
+            setErrorHorario(true)
+        } else {
+            setErrorHorario(false)
+        }
+
+        /*if(horario.value < "08:00" || horario.value > "18:00") {
+            setErrorHorario(true)
+        } else {
+            console.log("Entrou")
+        }
+        */
+    }                                   
 
 
     return (
         <Backdrop>
             <ModalContent >
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <ImgClose className='iconClose' src={close}  alt="close incon" />
                     <Label>Barbeiro</Label>
-                    <Select value={nomeBarbeiro}>
-                        <Option>Barbeiro1</Option>
-                        <Option>Barbeiro2</Option>
-                        <Option>Barbeiro3</Option>
+                    <Select value={nomeBarbeiro.value} >
+                        <Option value={nomeBarbeiro}>Barbeiro1</Option>
+                        <Option value={nomeBarbeiro}>Barbeiro2</Option>
+                        <Option value={nomeBarbeiro}>Barbeiro3</Option>
                     </Select>
                     <Label>Seu Nome</Label>
                     <InputCliente value={nomeCliente}/>
@@ -39,10 +62,12 @@ const ModalAgendamento = () => {
                         </DivSelect>
                     </DivServicos>
                     <Label>Horário</Label>
-                    <InputHorario value={horario} type="time"/>
+                    {horario}
+                    <InputHorario  type="text" placeholder="0:00" value={horario} onChange={handleSubmit}/>
                     <Label>Data</Label>
-                    <InputData value={data} type="date"/>
-                    <ConfirmButton>Confirmar</ConfirmButton>
+                    <InputData  type="date"/>
+                    {errorHorario ? <Error>Não é possível agendar nesta data e horário.</Error> : <></>}
+                    <ConfirmButton type="Submit" onClick={() => handleSubmit()}>Confirmar</ConfirmButton>
                 </Form>
             </ModalContent>
         </Backdrop>
@@ -132,6 +157,10 @@ const InputHorario = styled.input`
 const InputData = styled.input`
     height: 25px;
     cursor: pointer;
+`;
+
+const Error = styled.p`
+
 `;
 
 const ConfirmButton = styled.button`
