@@ -31,10 +31,6 @@ const LoginBarbeiro = () => {
             navigate("/HomeBarbeiro");
         }
     }
-
-    function handleRegister() {
-        navigate("/CadastroBarbeiro")
-    }
     
     return (
         <Container style={{backgroundImage: `url(${Background1})`}}>
@@ -77,14 +73,13 @@ const LoginBarbeiro = () => {
                         )}
                     {error ? (
                             <ErrorText className="Error">
-                                Dados não conferem! É preciso estar cadastrado.
+                                Dados não conferem!
                             </ErrorText>
                             ) : (
                                 <></>
                             )
                     }
                     <NextButton type="submit" onClick={() => handleSubmit()}>Entrar</NextButton>
-                    <TextRegister>Não possui conta? <LinkA onClick={() => handleRegister()}>Cadastre-se</LinkA></TextRegister>
                 </Form>
             </DivLogin>
         </Container>
@@ -184,20 +179,6 @@ const IMG = styled.img`
     height: 20px;
     position: relative;
     cursor: pointer;
-`;
-
-const TextRegister = styled.p`
-    font-family: 'Ubuntu', sans-serif;
-    color: #FFF;
-`;
-
-const LinkA = styled.button`
-    font-family: 'Ubuntu', sans-serif;
-    color: red;
-    text-decoration: underline;
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
-    border: 0px;
 `;
 
 export default LoginBarbeiro;
