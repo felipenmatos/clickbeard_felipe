@@ -7,15 +7,16 @@ import Visibility from "../assets/visibility.svg";
 import VisibilityRemove from "../assets/visibilityremove.svg";
 import MostrarRepeat from "../assets/icons/mostrar.svg";
 import OcultarRepeat from "../assets/icons/ocultar.svg";
-
+import { useHook } from "../Context/state";
 
 const CadastroCliente3 = () => {
     const [error, setError] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeat, setShowRepeat] = useState(false);
-    const [password, setPassword] = useState("");
+    const {userContext} = useHook();
+    const {password, setPassword} = userContext;
     const [passwordRepeat, setPasswordRepeat] = useState("");
-
+    
 
     const navigate = useNavigate();
     function handleSubmit(event) {

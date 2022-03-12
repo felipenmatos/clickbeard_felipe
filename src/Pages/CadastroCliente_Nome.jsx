@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Background1 from "../assets/background.jpg";
 import NavbarClientes from "../Componentes/NavbarClientes";
+import { useHook } from "../Context/state";
 
 const CadastroCliente1 = () => {
     const [error, setError] = useState(false);
-    const [nome, setNome] = useState("");
+    const {userContext} = useHook();
+    const {nome, setNome} = userContext;
 
     const navigate = useNavigate();
     function handleSubmit(event) {
