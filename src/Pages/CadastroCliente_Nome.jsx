@@ -9,6 +9,8 @@ const CadastroCliente1 = () => {
     const [error, setError] = useState(false);
     const {userContext} = useHook();
     const {nome, setNome} = userContext;
+    localStorage.setItem("nome", nome);
+
 
     const navigate = useNavigate();
     function handleSubmit(event) {
