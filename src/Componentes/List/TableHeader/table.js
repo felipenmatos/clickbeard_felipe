@@ -1,5 +1,5 @@
-//import ordenar from '../../../assets/ordenar.svg';
-//import desordenar from '../../../assets/desordenar.svg';
+import ordenar from '../../../assets/icons/ordenar.svg';
+import desordenar from '../../../assets/icons/desordenar.svg';
 import { useState } from 'react';
 import styled from "styled-components";
 
@@ -23,7 +23,7 @@ function TableHeader(){
                 <Span>Barbeiro</Span>
                 {filter === 'date' &&
                 <img 
-                
+                src={order === 'asc' ? desordenar : ordenar}
                 alt='ordenar'
                 />
             }
@@ -34,7 +34,7 @@ function TableHeader(){
                 <Span>Data</Span>
                 {filter === 'weekDay' &&
                 <img 
-                 
+                src={order === 'asc' ? desordenar : ordenar}
                 alt='ordenar'
                 />
             }
@@ -51,7 +51,7 @@ function TableHeader(){
                 <Span>Valor</Span>
                 {filter === 'value' &&
                 <img 
-                 
+                src={order === 'asc' ? desordenar : ordenar}
                 alt='ordenar'
                 />
             }
@@ -83,6 +83,7 @@ const ColumnTitle = styled.div`
 
 const Span = styled.span`
     margin-right: 5px;
+    font-family: 'Ubuntu', sans-serif;
 `;
 
 export default TableHeader;

@@ -1,27 +1,30 @@
 import React, { useState } from "react";
+import InputMask from "react-input-mask";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import close from '../../assets/icons/close-icon.svg';
 
-const ModalAgendamento = () => {
+const ModalAgendamento = ({open, setOpen}) => {
     const [nomeBarbeiro, setNomeBarbeiro] = useState("");
     const [nomeCliente, setNomeCliente] = useState("");
     const [servico, setServico] = useState("");
-    const [horario, setHorario] = useState("0:00");
+    const [horario, setHorario] = useState("");
     const [data, setData] = useState("");
     const [errorHorario, setErrorHorario] = useState(false);
+    console.log(data)
 
+    const navigate = useNavigate()
     const handleSubmit = async (event) => {
-        console.log(nomeBarbeiro.value)
-        console.log(nomeCliente.value)
-        console.log(servico.value)
-        console.log(horario.value)
-        console.log(data.value)
+        setNomeBarbeiro(event.target.value)
+        setNomeCliente(event.target.value)
+        setServico(event.target.value)
         setHorario(event.target.value)
+        setData(event.target.value)
 
-        if(nomeBarbeiro.value === "" || nomeCliente.value === "" || servico.value === "" || horario.value === "" || data.value === "") {
+        if(nomeCliente.value === 0) {
             setErrorHorario(true)
         } else {
-            setErrorHorario(false)
+            navigate("/HomeClientes")
         }
 
         /*if(horario.value < "08:00" || horario.value > "18:00") {
@@ -37,7 +40,12 @@ const ModalAgendamento = () => {
         <Backdrop>
             <ModalContent >
                 <Form onSubmit={handleSubmit}>
-                    <ImgClose className='iconClose' src={close}  alt="close incon" />
+                    <ImgClose 
+                        className='iconClose' 
+                        src={close}  
+                        alt="close incon"
+                        onClick={() => setOpen(false)} 
+                    />
                     <Label>Barbeiro</Label>
                     <Select value={nomeBarbeiro.value} >
                         <Option value={nomeBarbeiro}>Barbeiro1</Option>
@@ -45,7 +53,7 @@ const ModalAgendamento = () => {
                         <Option value={nomeBarbeiro}>Barbeiro3</Option>
                     </Select>
                     <Label>Seu Nome</Label>
-                    <InputCliente value={nomeCliente}/>
+                    <InputCliente type="text" value={nomeCliente.value} onChange={handleSubmit}/>
                     <Label>Serviço</Label>
                     <DivServicos>
                         <DivSelect>
@@ -62,10 +70,9 @@ const ModalAgendamento = () => {
                         </DivSelect>
                     </DivServicos>
                     <Label>Horário</Label>
-                    {horario}
-                    <InputHorario  type="text" placeholder="0:00" value={horario} onChange={handleSubmit}/>
+                    <InputHorario  type="text" placeholder="00:00" mask="99:99" value={horario.value} onChange={handleSubmit}/>
                     <Label>Data</Label>
-                    <InputData  type="date"/>
+                    <InputData type="date" value={data.value} onChange={handleSubmit}/>
                     {errorHorario ? <Error>Não é possível agendar nesta data e horário.</Error> : <></>}
                     <ConfirmButton type="Submit" onClick={() => handleSubmit()}>Confirmar</ConfirmButton>
                 </Form>
@@ -113,6 +120,7 @@ const ImgClose = styled.img`
 `;
 
 const Label = styled.label`
+    font-family: 'Ubuntu', sans-serif;
     color: #000;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -149,7 +157,7 @@ const InputSelect = styled.input`
     cursor: pointer;
 `;
 
-const InputHorario = styled.input`
+const InputHorario = styled(InputMask)`
     height: 25px;
     cursor: pointer;
 `;
@@ -170,6 +178,7 @@ const ConfirmButton = styled.button`
     margin-top: 30px;
     border-radius: 10px;
     background: #696969;
+    font-family: 'Ubuntu', sans-serif;
     color: #fff;
     border: 0px;
     cursor: pointer;

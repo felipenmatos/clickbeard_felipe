@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components"
 import TableHeader from "./TableHeader/table";
+import edit from "../../assets/icons/Edit.svg";
+import deletar from "../../assets/icons/Deletar.svg";
 
 function List(){
     return (
@@ -14,8 +16,8 @@ function List(){
                     <LineItems>Servico</LineItems>
                     <LineItems>Valor</LineItems>
                     <LineItems>
-                        <img className='cursor-pointer'  alt='edit icon'/>
-                        <img className='cursor-pointer' alt='delete icon'/>
+                        <ImgEdit className='cursor-pointer' src={edit}  alt='edit icon'/>
+                        <ImgDelete className='cursor-pointer' src={deletar} alt='delete icon'/>
                     </LineItems>
                 </TableLine>
             </TableBody>
@@ -48,6 +50,17 @@ const LineItems = styled.div`
     text-align: center;
     width: 150px;
     height: 55px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+`;
+
+const ImgEdit = styled.img`
+    margin-right: 5px;
+    cursor: pointer;
+`;
+
+const ImgDelete = styled.img`
+    cursor: pointer;
 `;
 
 export default List;

@@ -3,15 +3,15 @@ import styled from "styled-components";
 import ModalAgendamento from "../ModalAgendamento/ModalAgendamento.js";
 
 const Agendamento = () => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
         <ContainerAgendamento>
             <TextAgendar>Agendamento Aqui</TextAgendar>
-            <ButtonAgendar>
+            <ButtonAgendar onClick={() => setOpen(true)}>
                 Agendar Horário
             </ButtonAgendar>
-            {open && <ModalAgendamento/>}
+            {open && <ModalAgendamento open={open} setOpen={setOpen}/>}
         </ContainerAgendamento>
     )
 };
