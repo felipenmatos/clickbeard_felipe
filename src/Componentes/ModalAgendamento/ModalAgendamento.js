@@ -15,16 +15,19 @@ function ModalAgendamento({ open, setOpen }){
     const nome = localStorage.getItem('nome');
     const {userContext} = useHook();
     const {form, setForm} = userContext;
-    const [formulario, setFormulario] = useState([{
-        nome: localName,
-        cliente: nomeCliente,
-        servico: servico,
-        horario: horario,
-        data: data
-    }])
 
     function handLeSubmit(e){
         e.preventDefault()
+    }
+
+    function validador(){
+        if(localName.length === 0 || nomeCliente.length === 0 || servico.length === 0){
+            setError(true)
+        } else {
+            setError(false)
+            setOpen(false)
+            handleRegister()
+        }
     }
     
     const handleRegister = async (e) => {
@@ -35,7 +38,6 @@ function ModalAgendamento({ open, setOpen }){
             horario: horario,
             data: data,
         }])
-        console.log(form)
     }
 
     return (
@@ -88,7 +90,7 @@ function ModalAgendamento({ open, setOpen }){
                     />
                     {error ? <Error>Não foi possível agendar neste horário e data</Error> : <></>}
 
-                    <ConfirmButton onClick={(e) => handleRegister(e.target.value)}>Confirmar</ConfirmButton>
+                    <ConfirmButton onClick={(e) => validador(e.target.value)}>Confirmar</ConfirmButton>
                 </Form>
             </ModalContent>
         </Backdrop>
@@ -167,6 +169,10 @@ const InputData = styled(InputMask)`
 
 const Error = styled.p`
     font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-left: 30px;
+    margin-bottom: -18px;
     color: red;
 `;
 

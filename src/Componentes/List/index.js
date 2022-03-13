@@ -58,11 +58,6 @@ const LineItems = styled.div`
     font-size: 13px;
 `;
 
-const ImgEdit = styled.img`
-    margin-right: 5px;
-    cursor: pointer;
-`;
-
 const ImgDelete = styled.img`
     cursor: pointer;
 `;
