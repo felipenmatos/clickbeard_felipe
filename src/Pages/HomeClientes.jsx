@@ -4,20 +4,15 @@ import Agendamento from "../Componentes/Agendamento/Agendamento";
 import List from "../Componentes/List";
 import NavbarHome from "../Componentes/NavbarHome";
 
-function HomeClientes(user, setUser) {
-    
+function HomeClientes() {
+
     return (
         <Container>
             <NavbarHome />
             <Main>
-                <List 
-                user={user}
-                setUser={setUser}
-                />
+                <List/>
                 <ContainerAgendar>
-                    <Agendamento 
-                        
-                    />
+                    <Agendamento/>
                 </ContainerAgendar>
             </Main>
         </Container>
