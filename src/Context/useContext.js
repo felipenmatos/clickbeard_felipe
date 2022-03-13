@@ -4,15 +4,7 @@ export function UserContext () {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [form, setForm] = useState([
-        {
-            nome: "",
-            cliente: "",
-            servico: "",
-            horario: "",
-            data: ""
-        }
-    ])
+    const [form, setForm] = useState([])
 
     return (
         {

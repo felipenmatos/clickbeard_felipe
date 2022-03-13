@@ -12,6 +12,7 @@ function ModalAgendamento({ open, setOpen }){
     const [horario, setHorario] = useState("");
     const [data, setData] = useState("");
     const [error, setError] = useState(false);
+    const nome = localStorage.getItem('nome');
     const {userContext} = useHook();
     const {form, setForm} = userContext;
     const [formulario, setFormulario] = useState([{
@@ -27,14 +28,13 @@ function ModalAgendamento({ open, setOpen }){
     }
     
     const handleRegister = async (e) => {
-        setFormulario([{
+        setForm([ ...form, {
             nome: localName,
             cliente: nomeCliente,
             servico: servico,
             horario: horario,
             data: data,
         }])
-        setForm(formulario)
         console.log(form)
     }
 
@@ -58,6 +58,7 @@ function ModalAgendamento({ open, setOpen }){
                     <Label>Cliente</Label>
                     <InputCliente 
                         type="text"
+                        placeholder={nome}
                         value={nomeCliente}
                         onChange={(e) => setNomeCliente(e.target.value)}
                     />

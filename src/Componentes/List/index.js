@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components"
 import TableHeader from "./TableHeader/table";
-import edit from "../../assets/icons/Edit.svg";
 import deletar from "../../assets/icons/Deletar.svg";
 import { useHook } from "../../Context/state";
 
@@ -21,7 +20,6 @@ function List(){
                     <LineItems>{item.servico}</LineItems>
                     <LineItems>{item.cliente}</LineItems>
                         <LineItems>
-                            <ImgEdit className='cursor-pointer' src={edit}  alt='edit icon'/>
                             <ImgDelete className='cursor-pointer' src={deletar} alt='delete icon'/>
                         </LineItems>
                     </TableLine>
