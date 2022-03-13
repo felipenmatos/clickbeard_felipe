@@ -48,7 +48,7 @@ function TableHeader(){
             <ColumnTitle 
             onClick={() => handleChangeFilter('value')}
             >
-                <Span>Valor</Span>
+                <Span>Cliente</Span>
                 {filter === 'value' &&
                 <img 
                 src={order === 'asc' ? desordenar : ordenar}

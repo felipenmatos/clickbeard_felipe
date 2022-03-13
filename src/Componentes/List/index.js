@@ -9,17 +9,17 @@ function List(){
         <Table>
             <TableHeader />
             <TableBody>
-                <TableLine>
-                    <LineItems>Nome-Barbeiro</LineItems>
-                    <LineItems>Data</LineItems>
-                    <LineItems>Horario</LineItems>
+            <TableLine>
+                    <LineItems></LineItems>
+                    <LineItems></LineItems>
+                    <LineItems></LineItems>
                     <LineItems>Servico</LineItems>
-                    <LineItems>Valor</LineItems>
+                    <LineItems>Cliente</LineItems>
                     <LineItems>
                         <ImgEdit className='cursor-pointer' src={edit}  alt='edit icon'/>
                         <ImgDelete className='cursor-pointer' src={deletar} alt='delete icon'/>
                     </LineItems>
-                </TableLine>
+                    </TableLine>
             </TableBody>
         </Table>
         

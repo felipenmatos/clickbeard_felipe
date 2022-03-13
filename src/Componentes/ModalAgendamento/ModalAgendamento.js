@@ -1,80 +1,99 @@
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import close from '../../assets/icons/close-icon.svg';
 
-const ModalAgendamento = ({open, setOpen}) => {
-    const [nomeBarbeiro, setNomeBarbeiro] = useState("");
+
+
+function ModalAgendamento({ open, setOpen, user, setUser }){
+    const [localName, setLocalName] = useState("");
     const [nomeCliente, setNomeCliente] = useState("");
     const [servico, setServico] = useState("");
     const [horario, setHorario] = useState("");
     const [data, setData] = useState("");
-    const [errorHorario, setErrorHorario] = useState(false);
-    console.log(data)
+    const [error, setError] = useState(false);
+    const [form, setForm] = useState({
+        nome: localName,
+        cliente: nomeCliente,
+        servico: servico,
+        horario: horario,
+        data: data
+    })
 
-    const navigate = useNavigate()
-    const handleSubmit = async (event) => {
-        setNomeBarbeiro(event.target.value)
-        setNomeCliente(event.target.value)
-        setServico(event.target.value)
-        setHorario(event.target.value)
-        setData(event.target.value)
-
-        if(nomeCliente.value === 0) {
-            setErrorHorario(true)
+    function validador(){
+        if(localName.length === 0 || nomeCliente.length === 0 || servico.length === 0) {
+           setError(true)
         } else {
-            navigate("/HomeClientes")
+            setOpen(true)
         }
+    }
 
-        /*if(horario.value < "08:00" || horario.value > "18:00") {
-            setErrorHorario(true)
-        } else {
-            console.log("Entrou")
-        }
-        */
-    }                                   
-
+    function handLeSubmit(e){
+        e.preventDefault()
+    }
+    
+    const handleRegister = async (e) => {
+        setForm({
+            nome: localName,
+            cliente: nomeCliente,
+            servico: servico,
+            horario: horario,
+            data: data,
+        })
+        console.log(form)
+        validador()
+        setUser(form)
+    }
 
     return (
         <Backdrop>
             <ModalContent >
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handLeSubmit}>
                     <ImgClose 
                         className='iconClose' 
                         src={close}  
                         alt="close incon"
-                        onClick={() => setOpen(false)} 
+                        onClick={() => setOpen(false)}
                     />
                     <Label>Barbeiro</Label>
-                    <Select value={nomeBarbeiro.value} >
-                        <Option value={nomeBarbeiro}>Barbeiro1</Option>
-                        <Option value={nomeBarbeiro}>Barbeiro2</Option>
-                        <Option value={nomeBarbeiro}>Barbeiro3</Option>
-                    </Select>
-                    <Label>Seu Nome</Label>
-                    <InputCliente type="text" value={nomeCliente.value} onChange={handleSubmit}/>
+                    <InputBarbeiro
+                        type="text"
+                        value={localName}
+                        onChange={(e) => setLocalName(e.target.value)}
+                    />
+
+                    <Label>Cliente</Label>
+                    <InputCliente 
+                        type="text"
+                        value={nomeCliente}
+                        onChange={(e) => setNomeCliente(e.target.value)}
+                    />
+
                     <Label>Serviço</Label>
-                    <DivServicos>
-                        <DivSelect>
-                            <InputSelect value={servico}  type="checkbox" name="Cabelo"/>
-                            <Label>Cabelo</Label>
-                        </DivSelect>
-                        <DivSelect>
-                            <InputSelect value={servico}  type="checkbox" name="Barba"/>
-                            <Label>Barba</Label>
-                        </DivSelect>
-                        <DivSelect>
-                            <InputSelect value={servico}  type="checkbox" name="Sobrancelha"/>
-                            <Label>Sobrancelha</Label>
-                        </DivSelect>
-                    </DivServicos>
+                    <InputServicos  
+                        type="text"
+                        value={servico}
+                        onChange={(e) => setServico(e.target.value)}
+                    />
+
                     <Label>Horário</Label>
-                    <InputHorario  type="text" placeholder="00:00" mask="99:99" value={horario.value} onChange={handleSubmit}/>
+                    <InputHorario 
+                        type="text"
+                        placeholder="00:00"
+                        value={horario}
+                        mask="99:99"
+                        onChange={(e) => setHorario(e.target.value)}
+                    />
+
                     <Label>Data</Label>
-                    <InputData type="date" value={data.value} onChange={handleSubmit}/>
-                    {errorHorario ? <Error>Não é possível agendar nesta data e horário.</Error> : <></>}
-                    <ConfirmButton type="Submit" onClick={() => handleSubmit()}>Confirmar</ConfirmButton>
+                    <InputData 
+                        type="date"
+                        value={data}
+                        onChange={(e) => setData(e.target.value)}
+                    />
+
+                    <ConfirmButton onClick={(e) => handleRegister(e.target.value)}>Confirmar</ConfirmButton>
                 </Form>
             </ModalContent>
         </Backdrop>
@@ -126,13 +145,9 @@ const Label = styled.label`
     margin-bottom: 10px;
 `;
 
-const Select = styled.select`
-    height: 30px;
-    cursor: pointer;
-`;
-
-const Option = styled.option`
-    cursor: pointer;
+const InputBarbeiro = styled.input`
+    height: 25px;
+    padding: 0px 10px;
 `;
 
 const InputCliente = styled.input`
@@ -140,21 +155,9 @@ const InputCliente = styled.input`
     padding: 0px 10px;
 `;
 
-const DivServicos = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-`;
-
-const DivSelect = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
-
-const InputSelect = styled.input`
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+const InputServicos = styled.input`
+    height: 25px;
+    padding: 0px 10px;
 `;
 
 const InputHorario = styled(InputMask)`
@@ -165,10 +168,6 @@ const InputHorario = styled(InputMask)`
 const InputData = styled.input`
     height: 25px;
     cursor: pointer;
-`;
-
-const Error = styled.p`
-
 `;
 
 const ConfirmButton = styled.button`
