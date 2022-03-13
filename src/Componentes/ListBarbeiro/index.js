@@ -1,25 +1,30 @@
 import React from "react";
 import styled from "styled-components"
 import TableHeader from "./TableHeader/table";
-import edit from "../../assets/icons/Edit.svg";
 import deletar from "../../assets/icons/Deletar.svg";
+import { useHook } from "../../Context/state";
 
 function List(){
+    const {userContext} = useHook();
+    const {form} = userContext;
+
+
     return (
         <Table>
             <TableHeader />
             <TableBody>
-                <TableLine>
-                    <LineItems>Nome-Barbeiro</LineItems>
-                    <LineItems>Data</LineItems>
-                    <LineItems>Horario</LineItems>
-                    <LineItems>Servico</LineItems>
-                    <LineItems>Valor</LineItems>
-                    <LineItems>
-                        <ImgEdit className='cursor-pointer' src={edit}  alt='edit icon'/>
-                        <ImgDelete className='cursor-pointer' src={deletar} alt='delete icon'/>
-                    </LineItems>
-                </TableLine>
+                {form.map((item) => 
+                    <TableLine key={item}>
+                    <LineItems>{item.nome}</LineItems>
+                    <LineItems>{item.data}</LineItems>
+                    <LineItems>{item.horario}</LineItems>
+                    <LineItems>{item.servico}</LineItems>
+                    <LineItems>{item.cliente}</LineItems>
+                        <LineItems>
+                            <ImgDelete className='cursor-pointer' src={deletar} alt='delete icon'/>
+                        </LineItems>
+                    </TableLine>
+                )}
             </TableBody>
         </Table>
         
@@ -52,11 +57,6 @@ const LineItems = styled.div`
     height: 55px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
-`;
-
-const ImgEdit = styled.img`
-    margin-right: 5px;
-    cursor: pointer;
 `;
 
 const ImgDelete = styled.img`
