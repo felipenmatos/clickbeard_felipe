@@ -44,7 +44,8 @@ const Div = styled.div`
 
 const Span = styled.span`
     display: block;
-    font-size: 15px;
+    margin-top: 5px;
+    font-size: 13px;
     font-family: 'Ubuntu', sans-serif;
     color: #FFF;
 `;

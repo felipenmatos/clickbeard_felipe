@@ -19,9 +19,16 @@ function List(){
         setIdItemDelete(null)
     }
 
+    function handleOrder(newForm){
+        setForm(newForm)
+    }
+
     return (
         <Table>
-            <TableHeader />
+            <TableHeader 
+                form={form}
+                handleOrder={handleOrder}
+            />
             <TableBody>
             {form.map((item, id) => 
                     <TableLine key={id}>
@@ -40,7 +47,7 @@ function List(){
                             <ModalDelete 
                                 show={id === idItemDelete} 
                                 setClose={() => setIdItemDelete(null)}
-                                message="Apagar Item"
+                                message="Serviço concluído?"
                                 handleConfirm={() => handleDeleteItem(id)}
                             />
                         </LineItems>

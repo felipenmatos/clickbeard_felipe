@@ -1,43 +1,14 @@
-import ordenar from '../../../assets/icons/ordenar.svg';
-import desordenar from '../../../assets/icons/desordenar.svg';
-import { useState } from 'react';
 import styled from "styled-components";
 
 function TableHeader(){
-    const [filter, setFilter] = useState('date');
-    const [order, setOrder] = useState('asc');
-
-    function handleChangeFilter(type){
-        if (filter === type) {
-            setOrder(order === 'asc' ? 'desc' : 'asc')
-            return;
-        }
-        setFilter(type);
-    }
 
     return (
         <TableHead>
-            <ColumnTitle
-            onClick={() => handleChangeFilter('date')}
-            >
+            <ColumnTitle>
                 <Span>Barbeiro</Span>
-                {filter === 'date' &&
-                <img 
-                src={order === 'asc' ? desordenar : ordenar}
-                alt='ordenar'
-                />
-            }
             </ColumnTitle>
-            <ColumnTitle 
-            onClick={() => handleChangeFilter('weekDay')}
-            >
+            <ColumnTitle>
                 <Span>Data</Span>
-                {filter === 'weekDay' &&
-                <img 
-                src={order === 'asc' ? desordenar : ordenar}
-                alt='ordenar'
-                />
-            }
             </ColumnTitle>
             <ColumnTitle>
                 <Span>Horário</Span>
@@ -45,16 +16,8 @@ function TableHeader(){
             <ColumnTitle>
                 <Span>Serviço</Span>
             </ColumnTitle>
-            <ColumnTitle 
-            onClick={() => handleChangeFilter('value')}
-            >
+            <ColumnTitle>
                 <Span>Cliente</Span>
-                {filter === 'value' &&
-                <img 
-                src={order === 'asc' ? desordenar : ordenar}
-                alt='ordenar'
-                />
-            }
             </ColumnTitle>
         </TableHead>
     )
