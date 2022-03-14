@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import Cadastro from "../Componentes/CadastroBarbeiro/CadastroBarbeiro";
 import List from "../Componentes/List";
-import NavbarHome from "../Componentes/NavbarHome";
+import NavbarHomeBarbeiro from "../Componentes/NavbarHomeBarbeiro";
 
 function HomeBarbeiro() {
     
     return (
         <Container>
-            <NavbarHome />
+            <NavbarHomeBarbeiro />
             <Main>
                 <List />
                 <ContainerAgendar>

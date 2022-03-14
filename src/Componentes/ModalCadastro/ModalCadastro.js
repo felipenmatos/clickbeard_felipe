@@ -1,38 +1,40 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import close from '../../assets/icons/close-icon.svg';
+import { useHook } from "../../Context/state";
 
 const ModalCadastro = ({open, setOpen}) => {
-    const [nomeBarbeiro, setNomeBarbeiro] = useState("");
+    const {userContext} = useHook();
+    const [nome, setNome] = useState("") 
+    const {nomeBarbeiro, setNomeBarbeiro} = userContext;
     const [servico, setServico] = useState("");
-    const [errorHorario, setErrorHorario] = useState(false);
+    const [error, setError] = useState(false);
 
     //const navigate = useNavigate()
-    const handleSubmit = async (event) => {
-        setNomeBarbeiro(event.target.value)
+    function handLeSubmit(e){
+        e.preventDefault()
+    }
 
-        /*
-        if(nomeCliente.value === 0) {
-            setErrorHorario(true)
+    function validador(){
+        if(nome.length === 0) {
+            setError(true);
         } else {
-            navigate("/HomeClientes")
+            setError(false)
+            setOpen(false)
+            handleRegisterBarbeiro()
         }
-        */
+    }
 
-        /*if(horario.value < "08:00" || horario.value > "18:00") {
-            setErrorHorario(true)
-        } else {
-            console.log("Entrou")
-        }
-        */
-    }                                   
-
+    const handleRegisterBarbeiro = async (e) => {
+        setNomeBarbeiro([...nomeBarbeiro, {
+            nome: nome
+        }]);
+    }
 
     return (
         <Backdrop>
             <ModalContent >
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handLeSubmit}>
                     <ImgClose 
                         className='iconClose' 
                         src={close}  
@@ -40,11 +42,20 @@ const ModalCadastro = ({open, setOpen}) => {
                         onClick={() => setOpen(false)} 
                     />
                     <Label>Nome</Label>
-                    <InputName value={nomeBarbeiro} type="text" />
+                    <InputName 
+                        value={nome}
+                        type="text"
+                        onChange={(e) => setNome(e.target.value)}
+                    />
                     <Label>Especialidade</Label>
                     <DivServicos>
                         <DivSelect>
-                            <InputSelect value={servico}  type="checkbox" name="Cabelo"/>
+                            <InputSelect 
+                            value={servico}  
+                            type="checkbox" 
+                            name="Cabelo"
+                            setServico={(e) => setServico(e.target.value)}
+                        />
                             <Label>Cabelo</Label>
                         </DivSelect>
                         <DivSelect>
@@ -56,8 +67,8 @@ const ModalCadastro = ({open, setOpen}) => {
                             <Label>Sobrancelha</Label>
                         </DivSelect>
                     </DivServicos>
-                    {errorHorario ? <Error>Não é possível agendar nesta data e horário.</Error> : <></>}
-                    <ConfirmButton type="Submit" onClick={() => handleSubmit()}>Confirmar</ConfirmButton>
+                    {error ? <Error>Não foi possível efetuar cadastro.</Error> : <></>}
+                    <ConfirmButton onClick={(e) => validador(e.target.value)}>Confirmar</ConfirmButton>
                 </Form>
             </ModalContent>
         </Backdrop>
@@ -133,7 +144,14 @@ const InputSelect = styled.input`
     cursor: pointer;
 `;
 
-const Error = styled.p``;
+const Error = styled.p`
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-left: 70px;
+    margin-bottom: -18px;
+    color: red;
+`;
 
 const ConfirmButton = styled.button`
     width: 180px;

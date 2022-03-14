@@ -4,7 +4,8 @@ export function UserContext () {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [form, setForm] = useState([])
+    const [form, setForm] = useState([]);
+    const [nomeBarbeiro, setNomeBarbeiro] = useState([]);
 
     return (
         {
@@ -15,7 +16,9 @@ export function UserContext () {
             password,
             setPassword,
             form,
-            setForm
+            setForm,
+            nomeBarbeiro,
+            setNomeBarbeiro
         }
     )
 }
