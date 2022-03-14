@@ -12,8 +12,8 @@ function List(){
 
 
     const handleDeleteItem = index => {
-        let agendamento = [...form];
-        agendamento.splice(index)
+        let agendamento = form;
+        agendamento.splice(index, 1)
 
         setForm(agendamento)
         setIdItemDelete(null)
@@ -41,7 +41,7 @@ function List(){
                                 show={id === idItemDelete} 
                                 setClose={() => setIdItemDelete(null)}
                                 message="Apagar Item"
-                                handleConfirm={(e) => handleDeleteItem(e)}
+                                handleConfirm={() => handleDeleteItem(id)}
                             />
                         </LineItems>
                     </TableLine>
