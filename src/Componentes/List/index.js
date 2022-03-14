@@ -1,26 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components"
 import TableHeader from "./TableHeader/table";
+import ModalDelete from "../ConfirmDelete/Delete";
 import deletar from "../../assets/icons/Deletar.svg";
 import { useHook } from "../../Context/state";
 
 function List(){
     const {userContext} = useHook();
-    const {form} = userContext;
+    const {form, setForm} = userContext;
+    const [idItemDelete, setIdItemDelete] = useState(null);
+
+
+    const handleDeleteItem = index => {
+        let agendamento = [...form];
+        agendamento.splice(index)
+
+        setForm(agendamento)
+        setIdItemDelete(null)
+    }
 
     return (
         <Table>
             <TableHeader />
             <TableBody>
-            {form.map((item) => 
-                    <TableLine key={item}>
+            {form.map((item, id) => 
+                    <TableLine key={id}>
                     <LineItems>{item.nome}</LineItems>
                     <LineItems>{item.data}</LineItems>
                     <LineItems>{item.horario}</LineItems>
                     <LineItems>{item.servico}</LineItems>
                     <LineItems>{item.cliente}</LineItems>
                         <LineItems>
-                            <ImgDelete className='cursor-pointer' src={deletar} alt='delete icon'/>
+                            <ImgDelete 
+                                className='cursor-pointer' 
+                                src={deletar} 
+                                alt='delete icon'
+                                onClick={() => setIdItemDelete(id)}
+                            />
+                            <ModalDelete 
+                                show={id === idItemDelete} 
+                                setClose={() => setIdItemDelete(null)}
+                                message="Apagar Item"
+                                handleConfirm={(e) => handleDeleteItem(e)}
+                            />
                         </LineItems>
                     </TableLine>
             )}
@@ -59,6 +81,8 @@ const LineItems = styled.div`
 `;
 
 const ImgDelete = styled.img`
+    margin-left: -100px;
+    margin-right: 40px;
     cursor: pointer;
 `;
 
