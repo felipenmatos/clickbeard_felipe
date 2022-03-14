@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Agendamento from "../Componentes/Agendamento/Agendamento";
+import Alert from "../Componentes/Alert/Alert";
 import List from "../Componentes/List";
 import NavbarHome from "../Componentes/NavbarHome";
 
@@ -13,6 +14,7 @@ function HomeClientes() {
                 <List/>
                 <ContainerAgendar>
                     <Agendamento/>
+                    <Alert/>
                 </ContainerAgendar>
             </Main>
         </Container>

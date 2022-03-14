@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components"
 import TableHeader from "./TableHeader/table";
-import deletar from "../../assets/icons/Deletar.svg";
+import check from "../../assets/icons/check.svg";
 import { useHook } from "../../Context/state";
 
 function List(){
@@ -10,45 +10,45 @@ function List(){
 
 
     return (
-        <Table>
+        <TableContainer>
             <TableHeader />
-            <TableBody>
+            <TableBodyContainer>
                 {form.map((item) => 
-                    <TableLine key={item}>
-                    <LineItems>{item.nome}</LineItems>
-                    <LineItems>{item.data}</LineItems>
-                    <LineItems>{item.horario}</LineItems>
-                    <LineItems>{item.servico}</LineItems>
-                    <LineItems>{item.cliente}</LineItems>
-                        <LineItems>
-                            <ImgDelete className='cursor-pointer' src={deletar} alt='delete icon'/>
-                        </LineItems>
-                    </TableLine>
+                    <TableLineContainer key={item}>
+                    <LineItemsContainer>{item.nome}</LineItemsContainer>
+                    <LineItemsContainer>{item.data}</LineItemsContainer>
+                    <LineItemsContainer>{item.horario}</LineItemsContainer>
+                    <LineItemsContainer>{item.servico}</LineItemsContainer>
+                    <LineItemsContainer>{item.cliente}</LineItemsContainer>
+                        <LineItemsContainer>
+                            <ImgCheck className='cursor-pointer' src={check} alt='check icon'/>
+                        </LineItemsContainer>
+                    </TableLineContainer>
                 )}
-            </TableBody>
-        </Table>
+            </TableBodyContainer>
+        </TableContainer>
         
     )
 };
 
-const Table = styled.div`
+const TableContainer = styled.div`
     width: 930px;
     margin-left: -50px;
 `;
 
-const TableBody = styled.div`
+const TableBodyContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 940px;
 `;
 
-const TableLine = styled.div`
+const TableLineContainer = styled.div`
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #E0E0E0;
 `;
 
-const LineItems = styled.div`
+const LineItemsContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +59,7 @@ const LineItems = styled.div`
     font-size: 13px;
 `;
 
-const ImgDelete = styled.img`
+const ImgCheck = styled.img`
     cursor: pointer;
 `;
 

@@ -37,7 +37,7 @@ const LoginBarbeiro = () => {
             <Navbar />
             <DivLogin>
                 <Form onSubmit={handleSubmit}>
-                    <Text>Faça seu login</Text>
+                    <Text>Logar como Administrador</Text>
                     <Label>E-mail</Label>
                     <InputEmail
                     value={email}
@@ -125,7 +125,8 @@ const Form = styled.form`
 
 const Text = styled.h1`
     font-family: 'Ubuntu', sans-serif;
-    font-weight: 700;
+    font-weight: 400;
+    font-size: 30px;
     color: #fff;
 `;
 
