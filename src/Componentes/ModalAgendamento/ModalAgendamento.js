@@ -21,7 +21,7 @@ function ModalAgendamento({ open, setOpen }){
     }
 
     function validador(){
-        if(localName.length === 0 || nomeCliente.length === 0 || servico.length === 0){
+        if(localName.length === 0 || nomeCliente.length === 0 || data.length ===0 || horario.length === 0){
             setError(true)
         } else {
             setError(false)
