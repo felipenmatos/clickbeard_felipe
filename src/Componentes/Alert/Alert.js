@@ -16,8 +16,9 @@ const ContainerAlert = styled.div`
     justify-content: center;
     width: 150px;
     height: 40px;
-    margin-top: 20px;
+    margin-top: 200px;
     font-family: 'Ubuntu', sans-serif;
+    position: fixed;
     background: #000;
     box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
