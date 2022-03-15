@@ -143,6 +143,15 @@ const InputEmail = styled.input`
     height: 30px;
     margin-top: 10px;
     padding: 0px 10px ;
+    color: #646464;
+
+    :focus{
+    outline: 0;
+    }
+    
+    ::placeholder{
+        color: #ADADAD;
+    }
 `;
 
 const InputPassword = styled.input`
@@ -150,6 +159,15 @@ const InputPassword = styled.input`
     height: 30px;
     margin-top: 10px;
     padding: 0px 10px ;
+    color: #646464;
+
+    :focus{
+    outline: 0;
+    }
+    
+    ::placeholder{
+        color: #ADADAD;
+    }
 `;
 
 const ErrorText = styled.p`

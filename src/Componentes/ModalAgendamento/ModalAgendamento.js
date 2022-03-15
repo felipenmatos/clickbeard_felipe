@@ -82,6 +82,7 @@ function ModalAgendamento({ open, setOpen }){
                     <InputData 
                         type="text"
                         value={data}
+                        placeholder="dd/mm/aaaa"
                         mask="99/99/9999"
                         onChange={(e) => setData(e.target.value)}
                     />
@@ -141,17 +142,39 @@ const Label = styled.label`
 
 const Select = styled.select`
     height: 25px;
+    border: 1px solid #ADADAD;
+    border-radius: 4px;
+    color: #646464;
+
+    :focus{
+    outline: 0;
+    }
+    
+    ::placeholder{
+        color: #ADADAD;
+    }
 `;
 
 const Option = styled.option`
     font-family: 'Ubuntu', sans-serif;
-    color: #000;
+    color: #646464;
     height: 25px;
 `;
 
 const InputCliente = styled.input`
     height: 25px;
     padding: 0px 10px;
+    border: 1px solid #ADADAD;
+    border-radius: 4px;
+    color: #646464;
+
+    :focus{
+    outline: 0;
+    }
+    
+    ::placeholder{
+        color: #ADADAD;
+    }
 `;
 
 const InputHorario = styled(InputMask)`
@@ -162,6 +185,17 @@ const InputHorario = styled(InputMask)`
 const InputData = styled(InputMask)`
     height: 25px;
     cursor: pointer;
+    border: 1px solid #ADADAD;
+    border-radius: 4px;
+    color: #646464;
+
+    :focus{
+    outline: 0;
+    }
+    
+    ::placeholder{
+        color: #ADADAD;
+    }
 `;
 
 const Error = styled.p`

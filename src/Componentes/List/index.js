@@ -85,6 +85,7 @@ const LineItems = styled.div`
     height: 55px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
+    color: #646464;
 `;
 
 const ImgDelete = styled.img`

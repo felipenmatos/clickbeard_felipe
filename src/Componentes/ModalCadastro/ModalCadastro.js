@@ -39,13 +39,14 @@ const ModalCadastro = ({open, setOpen}) => {
                         alt="close incon"
                         onClick={() => setOpen(false)} 
                     />
-                    <Label>Nome</Label>
+                    <Label>Nome:</Label>
                     <InputName 
                         value={nome}
                         type="text"
+                        placeholder="Digite o nome do Barbeiro"
                         onChange={(e) => setNome(e.target.value)}
                     />
-                    <Label>Especialidade</Label>
+                    <Label>Especialidade:</Label>
                     <DivServicos>
                         <DivSelect>
                             <InputSelect 
@@ -54,15 +55,15 @@ const ModalCadastro = ({open, setOpen}) => {
                             name="Cabelo"
                             setServico={(e) => setServico(e.target.value)}
                         />
-                            <Label>Cabelo</Label>
+                            <LabelSelect>Cabelo</LabelSelect>
                         </DivSelect>
                         <DivSelect>
                             <InputSelect value={servico}  type="checkbox" name="Barba"/>
-                            <Label>Barba</Label>
+                            <LabelSelect>Barba</LabelSelect>
                         </DivSelect>
                         <DivSelect>
                             <InputSelect value={servico}  type="checkbox" name="Sobrancelha"/>
-                            <Label>Sobrancelha</Label>
+                            <LabelSelect>Sobrancelha</LabelSelect>
                         </DivSelect>
                     </DivServicos>
                     {error ? <Error>Não foi possível efetuar cadastro.</Error> : <></>}
@@ -118,9 +119,26 @@ const Label = styled.label`
     margin-bottom: 10px;
 `;
 
+const LabelSelect = styled.p`
+    color: #646464;
+`;
+
+
 const InputName = styled.input`
     height: 30px;
     padding: 0px 10px;
+
+    border: 1px solid #ADADAD;
+    border-radius: 4px;
+    color: #646464;
+
+    :focus{
+    outline: 0;
+    }
+    
+    ::placeholder{
+        color: #ADADAD;
+    }
 `;
 
 const DivServicos = styled.div`

@@ -6,13 +6,15 @@ const Cadastro = () => {
     const [open, setOpen] = useState(false);
 
     return (
-        <ContainerAgendamento>
-            <TextAgendar>Cadastrar Barbeiro</TextAgendar>
-            <ButtonAgendar onClick={() => setOpen(true)}>
-                Cadastrar
-            </ButtonAgendar>
+        <>
+            <ContainerAgendamento>
+                <TextAgendar>Cadastrar Barbeiro</TextAgendar>
+                <ButtonAgendar onClick={() => setOpen(true)}>
+                    Cadastrar
+                </ButtonAgendar>
+            </ContainerAgendamento>
             {open && <ModalCadastro open={open} setOpen={setOpen}/>}
-        </ContainerAgendamento>
+        </>
     )
 };
 
@@ -24,11 +26,17 @@ const ContainerAgendamento = styled.div`
     height: 130px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
+    position: fixed;
 
     background: #FAFAFA;
     box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 26px 30px;
+    transition: all 0.5s;
+
+    :hover {
+    -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
 `;
 
 const TextAgendar = styled.div`
