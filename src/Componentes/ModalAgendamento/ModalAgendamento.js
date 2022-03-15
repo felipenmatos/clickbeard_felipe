@@ -6,22 +6,21 @@ import close from '../../assets/icons/close-icon.svg';
 import { useHook } from "../../Context/state";
 
 function ModalAgendamento({ open, setOpen }){
-    const [localName, setLocalName] = useState("");
     const [nomeCliente, setNomeCliente] = useState("");
-    const [servico, setServico] = useState("");
+    const [servico, setServico] = useState();
     const [horario, setHorario] = useState("");
     const [data, setData] = useState("");
     const [error, setError] = useState(false);
     const nome = localStorage.getItem('nome');
     const {userContext} = useHook();
-    const {form, setForm} = userContext;
+    const {form, setForm, nomeBarbeiro, setNomeBarbeiro} = userContext;
 
     function handLeSubmit(e){
         e.preventDefault()
     }
 
     function validador(){
-        if(localName.length === 0 || nomeCliente.length === 0 || data.length ===0 || horario.length === 0){
+        if( nomeCliente.length === 0 || data.length ===0 || horario.length === 0){
             setError(true)
         } else {
             setError(false)
@@ -32,7 +31,7 @@ function ModalAgendamento({ open, setOpen }){
     
     const handleRegister = async (e) => {
         setForm([ ...form, {
-            nome: localName,
+            nome: nomeBarbeiro,
             cliente: nomeCliente,
             servico: servico,
             horario: horario,
@@ -50,12 +49,10 @@ function ModalAgendamento({ open, setOpen }){
                         alt="close incon"
                         onClick={() => setOpen(false)}
                     />
-                    <Label>Barbeiro</Label>
-                    <InputBarbeiro
-                        type="text"
-                        value={localName}
-                        onChange={(e) => setLocalName(e.target.value)}
-                    />
+                    <Label for="card">Barbeiro</Label>
+                    <Select onChange={(e) => setNomeBarbeiro(e.target.value)} id="card" >
+                        <Option value={nomeBarbeiro}>{nomeBarbeiro}</Option>
+                    </Select>
 
                     <Label>Cliente</Label>
                     <InputCliente 
@@ -66,12 +63,12 @@ function ModalAgendamento({ open, setOpen }){
                     />
 
                     <Label>Serviço</Label>
-                    <InputServicos  
-                        type="text"
-                        value={servico}
-                        onChange={(e) => setServico(e.target.value)}
-                    />
-
+                    <Select name="Serviço" value={servico} onChange={e => setServico(e.target.value)} >
+                        <Option value="">Selecione Serviço</Option>
+                        <Option value="Cabelo">Cabelo</Option>
+                        <Option value="Barba">Barba</Option>
+                        <Option value="Sobrancelha">Sobrancelha</Option>
+                    </Select>
                     <Label>Horário</Label>
                     <InputHorario 
                         type="text"
@@ -90,7 +87,7 @@ function ModalAgendamento({ open, setOpen }){
                     />
                     {error ? <Error>Não foi possível agendar neste horário e data</Error> : <></>}
 
-                    <ConfirmButton onClick={(e) => validador(e.target.value)}>Confirmar</ConfirmButton>
+                    <ConfirmButton type="submit" onClick={(e) => validador(e.target.value)}>Confirmar</ConfirmButton>
                 </Form>
             </ModalContent>
         </Backdrop>
@@ -142,17 +139,17 @@ const Label = styled.label`
     margin-bottom: 10px;
 `;
 
-const InputBarbeiro = styled.input`
+const Select = styled.select`
     height: 25px;
-    padding: 0px 10px;
+`;
+
+const Option = styled.option`
+    font-family: 'Ubuntu', sans-serif;
+    color: #000;
+    height: 25px;
 `;
 
 const InputCliente = styled.input`
-    height: 25px;
-    padding: 0px 10px;
-`;
-
-const InputServicos = styled.input`
     height: 25px;
     padding: 0px 10px;
 `;

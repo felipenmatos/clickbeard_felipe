@@ -5,7 +5,7 @@ export function UserContext () {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [form, setForm] = useState([]);
-    const [nomeBarbeiro, setNomeBarbeiro] = useState([]);
+    const [nomeBarbeiro, setNomeBarbeiro] = useState('');
 
     return (
         {

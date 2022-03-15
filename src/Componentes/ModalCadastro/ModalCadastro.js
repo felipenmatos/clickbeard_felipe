@@ -26,9 +26,7 @@ const ModalCadastro = ({open, setOpen}) => {
     }
 
     const handleRegisterBarbeiro = async (e) => {
-        setNomeBarbeiro([...nomeBarbeiro, {
-            nome: nome
-        }]);
+        setNomeBarbeiro(nome);
     }
 
     return (
