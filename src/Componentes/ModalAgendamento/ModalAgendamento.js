@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
-//import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import close from '../../assets/icons/close-icon.svg';
 import { useHook } from "../../Context/state";
@@ -12,6 +11,7 @@ function ModalAgendamento({ open, setOpen }){
     const [horario, setHorario] = useState("");
     const [data, setData] = useState("");
     const [error, setError] = useState(false);
+    const [errorMensage, setErrorMensage] = useState(false);
     const nome = localStorage.getItem('nome');
     const {userContext} = useHook();
     const {form, setForm, nomeBarbeiro, setNomeBarbeiro} = userContext;
@@ -22,6 +22,14 @@ function ModalAgendamento({ open, setOpen }){
 
     function validador(){
         if( nomeCliente.length === 0 || data.length ===0 || horario.length === 0){
+            setErrorMensage(true)
+        } else if (horario.slice(0, 1) < 1 && horario.slice(1, 2) < 8) {
+            setError(true)
+        } else if (horario.slice(0, 1) > 0 && horario.slice(1, 2) > 8) {
+            setError(true)
+        } else if (horario.slice(0, 1) > 0 && horario.slice(1, 2) > 8) {
+            setError(true)
+        } else if (horario.slice(0, 1) > 1) {
             setError(true)
         } else {
             setError(false)
@@ -79,10 +87,9 @@ function ModalAgendamento({ open, setOpen }){
                     </Select>
                     <Label>Horário</Label>
                     <InputHorario 
-                        type="text"
+                        type="time"
                         placeholder="00:00"
                         value={horario}
-                        mask="99:99"
                         onChange={(e) => setHorario(e.target.value)}
                     />
 
@@ -94,8 +101,8 @@ function ModalAgendamento({ open, setOpen }){
                         mask="99/99/9999"
                         onChange={(e) => setData(e.target.value)}
                     />
-                    {error ? <Error>Não foi possível agendar neste horário e data</Error> : <></>}
-
+                    {error ? <Error>Horário de funcionamento encerrado!</Error> : <></>}
+                    {errorMensage ? <ErrorMensage>Não foi permitido agendar, preencha os dados</ErrorMensage> : <></>}
                     <ConfirmButton type="submit" onClick={(e) => validador(e.target.value)}>Confirmar</ConfirmButton>
                 </Form>
             </ModalContent>
@@ -186,7 +193,7 @@ const InputCliente = styled.input`
     }
 `;
 
-const InputHorario = styled(InputMask)`
+const InputHorario = styled.input`
     height: 25px;
     cursor: pointer;
 `;
@@ -211,7 +218,16 @@ const Error = styled.p`
     font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
     margin-top: 2px;
-    margin-left: 30px;
+    margin-left: 60px;
+    margin-bottom: -18px;
+    color: red;
+`;
+
+const ErrorMensage = styled.p`
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-left: 20px;
     margin-bottom: -18px;
     color: red;
 `;
