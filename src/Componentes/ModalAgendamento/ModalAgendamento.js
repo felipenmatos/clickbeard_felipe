@@ -6,6 +6,7 @@ import close from '../../assets/icons/close-icon.svg';
 import { useHook } from "../../Context/state";
 
 function ModalAgendamento({ open, setOpen }){
+    const [selectValue, setSelectValue] = useState(1);
     const [nomeCliente, setNomeCliente] = useState("");
     const [servico, setServico] = useState();
     const [horario, setHorario] = useState("");
@@ -31,7 +32,7 @@ function ModalAgendamento({ open, setOpen }){
     
     const handleRegister = async (e) => {
         setForm([ ...form, {
-            nome: nomeBarbeiro,
+            nome: selectValue,
             cliente: nomeCliente,
             servico: servico,
             horario: horario,
@@ -50,8 +51,10 @@ function ModalAgendamento({ open, setOpen }){
                         onClick={() => setOpen(false)}
                     />
                     <Label for="card">Barbeiro</Label>
-                    <Select onChange={(e) => setNomeBarbeiro(e.target.value)} id="card" >
-                        <Option value={nomeBarbeiro}>{nomeBarbeiro}</Option>
+                    <Select value={selectValue} onChange={e => setSelectValue(e.target.value)} id="card" >
+                        {nomeBarbeiro.map((item, index) => (
+                            <Option value={item.id}>{item.nome}</Option>
+                        ))}
                     </Select>
 
                     <Label>Cliente</Label>

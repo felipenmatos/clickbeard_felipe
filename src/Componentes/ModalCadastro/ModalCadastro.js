@@ -9,6 +9,7 @@ const ModalCadastro = ({open, setOpen}) => {
     const {nomeBarbeiro, setNomeBarbeiro} = userContext;
     const [servico, setServico] = useState("");
     const [error, setError] = useState(false);
+    console.log(nomeBarbeiro)
 
     //const navigate = useNavigate()
     function handLeSubmit(e){
@@ -26,7 +27,9 @@ const ModalCadastro = ({open, setOpen}) => {
     }
 
     const handleRegisterBarbeiro = async (e) => {
-        setNomeBarbeiro(nome);
+        setNomeBarbeiro([...nomeBarbeiro, {
+            nome: nome
+        }]);
     }
 
     return (
