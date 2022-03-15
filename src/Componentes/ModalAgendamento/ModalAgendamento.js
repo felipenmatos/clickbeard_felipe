@@ -52,6 +52,7 @@ function ModalAgendamento({ open, setOpen }){
                     />
                     <Label for="card">Barbeiro</Label>
                     <Select value={selectValue} onChange={e => setSelectValue(e.target.value)} id="card" >
+                        <Option>Selecione o Barbeiro</Option>
                         {nomeBarbeiro.map((item, index) => (
                             <Option value={item.id}>{item.nome}</Option>
                         ))}
@@ -71,6 +72,10 @@ function ModalAgendamento({ open, setOpen }){
                         <Option value="Cabelo">Cabelo</Option>
                         <Option value="Barba">Barba</Option>
                         <Option value="Sobrancelha">Sobrancelha</Option>
+                        <Option value="Cabelo e Barba">Cabelo e Barba</Option>
+                        <Option value="Cabelo e Barba">Cabelo e Sobranc.</Option>
+                        <Option value="Cabelo e Barba">Barba e Sobranc.</Option>
+                        <Option value="Barba, Barba e Sobranc.">Barba, Barba e Sobranc.</Option>
                     </Select>
                     <Label>Horário</Label>
                     <InputHorario 
@@ -148,6 +153,7 @@ const Select = styled.select`
     border: 1px solid #ADADAD;
     border-radius: 4px;
     color: #646464;
+    cursor: pointer;
 
     :focus{
     outline: 0;
