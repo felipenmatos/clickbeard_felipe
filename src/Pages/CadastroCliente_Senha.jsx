@@ -25,7 +25,7 @@ const CadastroCliente3 = () => {
         if(password !== passwordRepeat || password.length === 0) {
             setError(true)
         } else {
-            navigate("/LoginClientes");
+            navigate("/PerfilCriado");
         }
     }
 
