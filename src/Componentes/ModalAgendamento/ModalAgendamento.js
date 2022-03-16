@@ -10,7 +10,6 @@ function ModalAgendamento({ open, setOpen }){
     const [horario, setHorario] = useState("");
     const [data, setData] = useState("");
     const [error, setError] = useState(false);
-    const [errorMensage, setErrorMensage] = useState(false);
     const {userContext} = useHook();
     const {form, setForm, nomeBarbeiro} = userContext;
     const nome = localStorage.getItem('nome');
@@ -21,7 +20,7 @@ function ModalAgendamento({ open, setOpen }){
 
     function validador(){
         if(data.length ===0 || horario.length === 0){
-            setErrorMensage(true)
+            setError(true)
         } else if (horario.slice(0, 1) < 1 && horario.slice(1, 2) < 8) {
             setError(true)
         } else if (horario.slice(0, 1) > 0 && horario.slice(1, 2) > 8) {
@@ -92,7 +91,6 @@ function ModalAgendamento({ open, setOpen }){
                         onChange={(e) => setData(e.target.value)}
                     />
                     {error ? <Error>Neste horário o estabelecimento está fechado!</Error> : <></>}
-                    {errorMensage ? <ErrorMensage>Não foi permitido agendar, preencha os dados</ErrorMensage> : <></>}
                     <ConfirmButton type="submit" onClick={(e) => validador(e.target.value)}>Confirmar</ConfirmButton>
                 </Form>
             </ModalContent>
@@ -193,15 +191,6 @@ const Error = styled.p`
     font-size: 14px;
     margin-top: 2px;
     margin-left: 25px;
-    margin-bottom: -18px;
-    color: red;
-`;
-
-const ErrorMensage = styled.p`
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 14px;
-    margin-top: 2px;
-    margin-left: 20px;
     margin-bottom: -18px;
     color: red;
 `;
