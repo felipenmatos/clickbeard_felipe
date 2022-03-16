@@ -20,9 +20,6 @@ function List(){
                     <LineItemsContainer>{item.horario}</LineItemsContainer>
                     <LineItemsContainer>{item.servico}</LineItemsContainer>
                     <LineItemsContainer>{item.cliente}</LineItemsContainer>
-                        <LineItemsContainer>
-                            <ImgCheck className='cursor-pointer' src={check} alt='check icon'/>
-                        </LineItemsContainer>
                     </TableLineContainer>
                 )}
             </TableBodyContainer>

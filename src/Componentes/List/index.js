@@ -10,7 +10,6 @@ function List(){
     const {form, setForm} = userContext;
     const [idItemDelete, setIdItemDelete] = useState(null);
 
-
     const handleDeleteItem = index => {
         let agendamento = form;
         agendamento.splice(index, 1)

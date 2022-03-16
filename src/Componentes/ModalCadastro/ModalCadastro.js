@@ -5,11 +5,12 @@ import { useHook } from "../../Context/state";
 
 const ModalCadastro = ({open, setOpen}) => {
     const {userContext} = useHook();
-    const [nome, setNome] = useState("") 
+    const [nome, setNome] = useState("");
+    const [idade, setIdade] = useState("");
+    const [dataContratacao, setDataContratacao] = useState(""); 
     const {nomeBarbeiro, setNomeBarbeiro} = userContext;
     const [servico, setServico] = useState("");
     const [error, setError] = useState(false);
-    console.log(nomeBarbeiro)
 
     //const navigate = useNavigate()
     function handLeSubmit(e){
@@ -28,7 +29,10 @@ const ModalCadastro = ({open, setOpen}) => {
 
     const handleRegisterBarbeiro = async (e) => {
         setNomeBarbeiro([...nomeBarbeiro, {
-            nome: nome
+            nome: nome,
+            servico: servico,
+            idade: idade,
+            data_Contratacao: dataContratacao
         }]);
     }
 
@@ -69,6 +73,18 @@ const ModalCadastro = ({open, setOpen}) => {
                             <LabelSelect>Sobrancelha</LabelSelect>
                         </DivSelect>
                     </DivServicos>
+                    <Label>Idade:</Label>
+                    <InputNumber
+                        value={idade} 
+                        type="number"
+                        onChange={(e) => setIdade(e.target.value)}
+                    />
+                    <Label>Data de contratação:</Label>
+                    <InputNumber 
+                        value={dataContratacao}
+                        type="date"
+                        onChange={(e) => setDataContratacao(e.target.value)}
+                    />
                     {error ? <Error>Não foi possível efetuar cadastro.</Error> : <></>}
                     <ConfirmButton onClick={(e) => validador(e.target.value)}>Confirmar</ConfirmButton>
                 </Form>
@@ -99,7 +115,7 @@ const ModalContent = styled.div`
     padding: 20px;
     border: 1px solid #888;
     width: 350px;
-    height: 250px;
+    height: 400px;
     border-radius: 16px;
 `;
 
@@ -128,6 +144,23 @@ const LabelSelect = styled.p`
 
 
 const InputName = styled.input`
+    height: 30px;
+    padding: 0px 10px;
+
+    border: 1px solid #ADADAD;
+    border-radius: 4px;
+    color: #646464;
+
+    :focus{
+    outline: 0;
+    }
+    
+    ::placeholder{
+        color: #ADADAD;
+    }
+`;
+
+const InputNumber = styled.input`
     height: 30px;
     padding: 0px 10px;
 

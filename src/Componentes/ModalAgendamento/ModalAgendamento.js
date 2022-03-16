@@ -6,7 +6,6 @@ import { useHook } from "../../Context/state";
 
 function ModalAgendamento({ open, setOpen }){
     const [selectValue, setSelectValue] = useState(1);
-    const [nomeCliente, setNomeCliente] = useState("");
     const [servico, setServico] = useState();
     const [horario, setHorario] = useState("");
     const [data, setData] = useState("");
@@ -14,14 +13,14 @@ function ModalAgendamento({ open, setOpen }){
     const [errorMensage, setErrorMensage] = useState(false);
     const nome = localStorage.getItem('nome');
     const {userContext} = useHook();
-    const {form, setForm, nomeBarbeiro, setNomeBarbeiro} = userContext;
+    const {form, setForm, nomeBarbeiro} = userContext;
 
     function handLeSubmit(e){
         e.preventDefault()
     }
 
     function validador(){
-        if( nomeCliente.length === 0 || data.length ===0 || horario.length === 0){
+        if(data.length ===0 || horario.length === 0){
             setErrorMensage(true)
         } else if (horario.slice(0, 1) < 1 && horario.slice(1, 2) < 8) {
             setError(true)
@@ -41,7 +40,7 @@ function ModalAgendamento({ open, setOpen }){
     const handleRegister = async (e) => {
         setForm([ ...form, {
             nome: selectValue,
-            cliente: nomeCliente,
+            cliente: nome,
             servico: servico,
             horario: horario,
             data: data,
@@ -65,15 +64,6 @@ function ModalAgendamento({ open, setOpen }){
                             <Option value={item.id}>{item.nome}</Option>
                         ))}
                     </Select>
-
-                    <Label>Cliente</Label>
-                    <InputCliente 
-                        type="text"
-                        placeholder={nome}
-                        value={nomeCliente}
-                        onChange={(e) => setNomeCliente(e.target.value)}
-                    />
-
                     <Label>Serviço</Label>
                     <Select name="Serviço" value={servico} onChange={e => setServico(e.target.value)} >
                         <Option value="">Selecione Serviço</Option>
@@ -101,7 +91,7 @@ function ModalAgendamento({ open, setOpen }){
                         mask="99/99/9999"
                         onChange={(e) => setData(e.target.value)}
                     />
-                    {error ? <Error>Horário de funcionamento encerrado!</Error> : <></>}
+                    {error ? <Error>Neste horário o estabelecimento está fechado!</Error> : <></>}
                     {errorMensage ? <ErrorMensage>Não foi permitido agendar, preencha os dados</ErrorMensage> : <></>}
                     <ConfirmButton type="submit" onClick={(e) => validador(e.target.value)}>Confirmar</ConfirmButton>
                 </Form>
@@ -132,7 +122,7 @@ const ModalContent = styled.div`
     padding: 20px;
     border: 1px solid #888;
     width: 350px;
-    height: 400px;
+    height: 330px;
     border-radius: 16px;
 `;
 
@@ -177,22 +167,6 @@ const Option = styled.option`
     height: 25px;
 `;
 
-const InputCliente = styled.input`
-    height: 25px;
-    padding: 0px 10px;
-    border: 1px solid #ADADAD;
-    border-radius: 4px;
-    color: #646464;
-
-    :focus{
-    outline: 0;
-    }
-    
-    ::placeholder{
-        color: #ADADAD;
-    }
-`;
-
 const InputHorario = styled.input`
     height: 25px;
     cursor: pointer;
@@ -218,7 +192,7 @@ const Error = styled.p`
     font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
     margin-top: 2px;
-    margin-left: 60px;
+    margin-left: 25px;
     margin-bottom: -18px;
     color: red;
 `;
