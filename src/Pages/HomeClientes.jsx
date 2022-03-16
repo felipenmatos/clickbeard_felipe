@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Agendamento from "../Componentes/Agendamento/Agendamento";
 import Alert from "../Componentes/Alert/Alert";
-import List from "../Componentes/List";
+import ListAdm from "../Componentes/ListBarbeiro";
 import NavbarHome from "../Componentes/NavbarHome";
+import Warning from "../Componentes/Warning/Warning";
 
 function HomeClientes() {
 
@@ -11,10 +12,11 @@ function HomeClientes() {
         <Container>
             <NavbarHome />
             <Main>
-                <List/>
+                <ListAdm/>
                 <ContainerAgendar>
                     <Agendamento/>
                     <Alert/>
+                    <Warning />
                 </ContainerAgendar>
             </Main>
         </Container>

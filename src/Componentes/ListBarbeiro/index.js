@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components"
-import TableHeader from "./TableHeader/table";
-import check from "../../assets/icons/check.svg";
+import TableHeader from "./TableHeader/tableHeader";
 import { useHook } from "../../Context/state";
 
-function List(){
+function ListAdm(){
     const {userContext} = useHook();
     const {form} = userContext;
 
@@ -30,13 +29,13 @@ function List(){
 
 const TableContainer = styled.div`
     width: 930px;
-    margin-left: -50px;
+    margin-left: -10px;
 `;
 
 const TableBodyContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 940px;
+    width: 780px;
 `;
 
 const TableLineContainer = styled.div`
@@ -60,4 +59,4 @@ const ImgCheck = styled.img`
     cursor: pointer;
 `;
 
-export default List;
+export default ListAdm;

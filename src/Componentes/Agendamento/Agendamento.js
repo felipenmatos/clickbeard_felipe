@@ -24,6 +24,7 @@ const ContainerAgendamento = styled.div`
     align-items: center;
     width: 150px;
     height: 130px;
+    margin-left: -50px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
     position: fixed;

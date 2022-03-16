@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Cadastro from "../Componentes/CadastroBarbeiro/CadastroBarbeiro";
-import List from "../Componentes/List";
+import List from "../Componentes/List/index";
 import NavbarHomeBarbeiro from "../Componentes/NavbarHomeBarbeiro";
 
 function HomeBarbeiro() {

@@ -37,6 +37,7 @@ const ContainerAgendamento = styled.div`
     :hover {
     -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    }
 `;
 
 const TextAgendar = styled.div`

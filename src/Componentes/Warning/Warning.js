@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const Alert = () => {
+const Warning = () => {
     return (
         <ContainerAlert>
-            <TextAlert>Atendimento das 08:00 às 18:00 de Seg. à Sex.</TextAlert>
+            <TextAlert>
+                Atenção: Cada serviço tem tempo médio de 30 minutos, 
+                então confira os horários disponíveis antes de Agendar.
+            </TextAlert>
         </ContainerAlert>
     )
 };
@@ -15,12 +18,12 @@ const ContainerAlert = styled.div`
     align-items: center;
     justify-content: center;
     width: 150px;
-    height: 40px;
-    margin-top: 200px;
+    height: 60px;
+    margin-top: 310px;
     margin-left: -50px;
     font-family: 'Ubuntu', sans-serif;
     position: fixed;
-    background: #000;
+    background: #FAFAFA;
     box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 26px 30px;
@@ -30,12 +33,13 @@ const ContainerAlert = styled.div`
     :hover {
     -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    }
 `;
 
 const TextAlert = styled.div`
-    color: #FFF;
+    color: #000;
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
 `;
 
-export default Alert;
+export default Warning;
