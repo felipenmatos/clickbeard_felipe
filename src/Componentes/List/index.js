@@ -60,6 +60,10 @@ function List(){
 const Table = styled.div`
     width: 930px;
     margin-left: -50px;
+
+    @media screen and (min-width: 1500px){
+        width: 1100px;
+    }
 `;
 
 const TableBody = styled.div`

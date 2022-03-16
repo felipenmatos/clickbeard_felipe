@@ -29,6 +29,10 @@ function ListAdm(){
 const TableContainer = styled.div`
     width: 930px;
     margin-left: -10px;
+    
+    @media screen and (min-width: 1500px){
+        width: 1100px;
+    }
 `;
 
 const TableBodyContainer = styled.div`
