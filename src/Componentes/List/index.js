@@ -29,32 +29,31 @@ function List(){
                 handleOrder={handleOrder}
             />
             <TableBody>
-            {form.map((item, id) => 
+                {form.map((item, id) => 
                     <TableLine key={id}>
-                    <LineItems>{item.nome}</LineItems>
-                    <LineItems>{item.data}</LineItems>
-                    <LineItems>{item.horario}</LineItems>
-                    <LineItems>{item.servico}</LineItems>
-                    <LineItems>{item.cliente}</LineItems>
+                        <LineItems>{item.nome}</LineItems>
+                        <LineItems>{item.data}</LineItems>
+                        <LineItems>{item.horario}</LineItems>
+                        <LineItems>{item.servico}</LineItems>
+                        <LineItems>{item.cliente}</LineItems>
                         <LineItems>
                             <ImgDelete 
-                                className='cursor-pointer' 
-                                src={deletar} 
-                                alt='delete icon'
-                                onClick={() => setIdItemDelete(id)}
+                            className='cursor-pointer' 
+                            src={deletar} 
+                            alt='delete icon'
+                            onClick={() => setIdItemDelete(id)}
                             />
                             <ModalDelete 
-                                show={id === idItemDelete} 
-                                setClose={() => setIdItemDelete(null)}
-                                message="Serviço concluído?"
-                                handleConfirm={() => handleDeleteItem(id)}
+                            show={id === idItemDelete} 
+                            setClose={() => setIdItemDelete(null)}
+                            message="Serviço concluído?"
+                            handleConfirm={() => handleDeleteItem(id)}
                             />
                         </LineItems>
                     </TableLine>
-            )}
+                )}
             </TableBody>
         </Table>
-        
     )
 };
 

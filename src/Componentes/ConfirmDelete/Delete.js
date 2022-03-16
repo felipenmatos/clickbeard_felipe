@@ -5,16 +5,16 @@ function ModalDelete({show, setClose, message, handleConfirm }) {
     return (
         <>
             {show &&
-            <Container>
-                <Div></Div>
-                <Span>{message}</Span>
-                <ButtonConfirm onClick={() => handleConfirm()}>
-                    Sim
-                </ButtonConfirm>
-                <ButtonNo onClick={() => setClose()}>
-                    Não
-                </ButtonNo>
-            </Container>
+                <Container>
+                    <Div></Div>
+                    <Span>{message}</Span>
+                    <ButtonConfirm onClick={() => handleConfirm()}>
+                        Sim
+                    </ButtonConfirm>
+                    <ButtonNo onClick={() => setClose()}>
+                        Não
+                    </ButtonNo>
+                </Container>
             }
         </>
     )

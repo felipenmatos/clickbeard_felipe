@@ -7,7 +7,6 @@ function ListAdm(){
     const {userContext} = useHook();
     const {form} = userContext;
 
-
     return (
         <TableContainer>
             <TableHeader />
@@ -53,10 +52,6 @@ const LineItemsContainer = styled.div`
     height: 55px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
-`;
-
-const ImgCheck = styled.img`
-    cursor: pointer;
 `;
 
 export default ListAdm;

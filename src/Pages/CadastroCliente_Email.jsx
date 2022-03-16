@@ -9,8 +9,8 @@ const CadastroCliente2 = () => {
     const [error, setError] = useState(false);
     const {userContext} = useHook();
     const {email, setEmail} = userContext;
-
     const navigate = useNavigate();
+    
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -43,15 +43,15 @@ const CadastroCliente2 = () => {
                     placeholder="Digite seu email"
                     maxLength={80}
                     />
-                    {error ? (
+                    {error ? 
+                        (
                             <ErrorText className="Error">
                                 É preciso preencher um e-mail válido.
                             </ErrorText>
-                            ) : (
-                                <></>
-                            )
+                        ) : (
+                            <></>
+                        )
                     }
-
                     <NextButton type="submit" onClick={() => handleSubmit()}>Próximo</NextButton>
                 </Form>
                 <DivRegister>
@@ -98,6 +98,7 @@ const Form = styled.form`
     :hover {
     -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    }
 `;
 
 const Text = styled.h1`

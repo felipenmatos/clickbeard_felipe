@@ -11,9 +11,9 @@ function ModalAgendamento({ open, setOpen }){
     const [data, setData] = useState("");
     const [error, setError] = useState(false);
     const [errorMensage, setErrorMensage] = useState(false);
-    const nome = localStorage.getItem('nome');
     const {userContext} = useHook();
     const {form, setForm, nomeBarbeiro} = userContext;
+    const nome = localStorage.getItem('nome');
 
     function handLeSubmit(e){
         e.preventDefault()

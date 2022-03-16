@@ -12,7 +12,6 @@ const ModalCadastro = ({open, setOpen}) => {
     const [servico, setServico] = useState("");
     const [error, setError] = useState(false);
 
-    //const navigate = useNavigate()
     function handLeSubmit(e){
         e.preventDefault()
     }

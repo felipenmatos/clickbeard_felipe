@@ -11,13 +11,13 @@ const LoginBarbeiro = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleClickPassword = (e) => {
         e.preventDefault()
         setShowPassword(!showPassword)
     }
 
-    const navigate = useNavigate();
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -46,7 +46,6 @@ const LoginBarbeiro = () => {
                     placeholder="Digite seu e-mail"
                     maxLength={100}
                     />
-                    
                     <Label>Senha</Label>
                     <InputPassword
                     value={password}
@@ -70,7 +69,8 @@ const LoginBarbeiro = () => {
                         alt="Ocultar Senha"
                         onClick={handleClickPassword}
                         />
-                        )}
+                        )
+                    }
                     {error ? (
                             <ErrorText className="Error">
                                 Dados não conferem!
@@ -121,6 +121,7 @@ const Form = styled.form`
     :hover {
     -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    }
 `;
 
 const Text = styled.h1`

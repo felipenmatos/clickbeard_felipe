@@ -16,9 +16,8 @@ const CadastroCliente3 = () => {
     const {userContext} = useHook();
     const {password, setPassword} = userContext;
     const [passwordRepeat, setPasswordRepeat] = useState("");
-    
-
     const navigate = useNavigate();
+    
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -59,20 +58,21 @@ const CadastroCliente3 = () => {
                     />
                     {showPassword ? 
                         (
-                        <IMG1 
-                        src={Visibility}
-                        className="mostrarSenha"
-                        alt="Mostrar Senha"
-                        onClick={handleClickPassword}
-                        />
+                            <IMG1 
+                            src={Visibility}
+                            className="mostrarSenha"
+                            alt="Mostrar Senha"
+                            onClick={handleClickPassword}
+                            />
                         ) : (
-                        <IMG1
-                        src={VisibilityRemove}
-                        className="ocultarSenha"
-                        alt="Ocultar Senha"
-                        onClick={handleClickPassword}
-                        />
-                    )}
+                            <IMG1
+                            src={VisibilityRemove}
+                            className="ocultarSenha"
+                            alt="Ocultar Senha"
+                            onClick={handleClickPassword}
+                            />
+                        )
+                    }
                     <Label2>Repita a Senha</Label2>
                     <InputEmail
                     value={passwordRepeat}
@@ -83,29 +83,30 @@ const CadastroCliente3 = () => {
                     />
                     {showRepeat ? 
                         (
-                        <IMG 
-                        src={MostrarRepeat}
-                        className="mostrarSenha"
-                        alt="Mostrar Senha"
-                        onClick={handleRepeat}
-                        />
+                            <IMG 
+                            src={MostrarRepeat}
+                            className="mostrarSenha"
+                            alt="Mostrar Senha"
+                            onClick={handleRepeat}
+                            />
                         ) : (
-                        <IMG 
-                        src={OcultarRepeat}
-                        className="ocultarSenha"
-                        alt="Ocultar Senha"
-                        onClick={handleRepeat}
-                        />
-                    )}
-                    {error ? (
+                            <IMG 
+                            src={OcultarRepeat}
+                            className="ocultarSenha"
+                            alt="Ocultar Senha"
+                            onClick={handleRepeat}
+                            />
+                        )
+                    }
+                    {error ? 
+                        (
                             <ErrorText className="Error">
                                 As senhas devem ser iguais.
                             </ErrorText>
-                            ) : (
-                                <></>
-                            )
+                        ) : (
+                            <></>
+                        )
                     }
-
                     <NextButton type="submit" onClick={() => handleSubmit()}>Concluir</NextButton>
                 </Form>
                 <DivRegister>
@@ -152,6 +153,7 @@ const Form = styled.form`
     :hover {
     -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    }
 `;
 
 const Text = styled.h1`

@@ -14,14 +14,13 @@ const LoginClientes = () => {
     const [passwordLogin, setPasswordLogin] = useState("");
     const { userContext } = useHook();
     const {email, password} = userContext;
-    console.log(email)
+    const navigate = useNavigate();
 
     const handleClickPassword = (e) => {
         e.preventDefault()
         setShowPassword(!showPassword)
     }
 
-    const navigate = useNavigate();
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -77,7 +76,8 @@ const LoginClientes = () => {
                         alt="Ocultar Senha"
                         onClick={handleClickPassword}
                         />
-                        )}
+                        )
+                    }
                     {error ? (
                             <ErrorText className="Error">
                                 Dados não conferem! É preciso estar cadastrado.
@@ -86,7 +86,6 @@ const LoginClientes = () => {
                                 <></>
                             )
                     }
-
                     <NextButton type="submit" onClick={() => handleSubmit()}>Entrar</NextButton>
                 </Form>
                 <DivRegister>

@@ -9,10 +9,9 @@ const CadastroCliente1 = () => {
     const [error, setError] = useState(false);
     const {userContext} = useHook();
     const {nome, setNome} = userContext;
-    localStorage.setItem("nome", nome);
-
-
     const navigate = useNavigate();
+    localStorage.setItem("nome", nome);
+    
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -41,15 +40,15 @@ const CadastroCliente1 = () => {
                     placeholder="Digite seu nome"
                     maxLength={80}
                     />
-                    {error ? (
+                    {error ? 
+                        (
                             <ErrorText className="Error">
                                 É preciso preencher o nome.
                             </ErrorText>
-                            ) : (
-                                <></>
-                            )
+                        ) : (
+                            <></>
+                        )
                     }
-
                     <NextButton type="submit" onClick={() => handleSubmit()}>Próximo</NextButton>
                 </Form>
                 <DivRegister>
@@ -97,6 +96,7 @@ const Form = styled.form`
     :hover {
     -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    }
 `;
 
 const Text = styled.h1`

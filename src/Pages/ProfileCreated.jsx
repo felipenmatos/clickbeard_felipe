@@ -7,9 +7,7 @@ import iconValidate from "../assets/icons/IconValidate.svg";
 
 
 const PerfilCreated = () => {
-    
     const navigate = useNavigate();
-    
 
     function handleLogin() {
         navigate("/LoginClientes")

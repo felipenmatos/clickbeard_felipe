@@ -13,5 +13,13 @@ O projeto consiste em um sistema de agendamento e de controle sobre as demandas 
 
 # Sobre o desenvolvimento: 
 Utilizei um Context como manipulação e forma de guardar dados para simular um banco de dados no funcionamento do sistema.
-O styled-components foi utilizado para as estilizações reduzindo a quantidade de arquivos no projeto, caso eu tivesse que
-usar arquivos css.
+O styled-components foi utilizado para as estilizações reduzindo a quantidade de arquivos no projeto, caso eu tivesse que utilizar arquivos css.
+O layout em si foi construído do zero com base em pesquisas e idéias para melhorar a performace e entendimento de usabilidade por parte de terceiros. 
+
+
+# Rotas: 
+- Login Cliente
+- Login Administrador
+- Cadastro Cliente
+- Home Cliente
+- Home Administrador
