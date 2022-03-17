@@ -1,6 +1,8 @@
 # Sistema de agendamento para Barbearias
 
-O projeto consiste em um sistema de agendamento e de controle sobre as demandas de serviço numa barbearia, onde o administrador poderá consultar todas os agendamentos, visualizar datas, horários, além de poder baixar agendamentos caso tenha concluído e cadastrar seus Barbeiros com nome, idade, serviço e data de contratação. O sistema também dá a opção de entrar como cliente, no qual deverá ser efetuado um cadastro com informações de nome, e-mail e senha. A tela do cliente consiste em visualizar todos os agendamentos e avisos sobre horários de funcionamento do estabelecimento e tempo de serviço, terá também a opção de poder efetuar o Agendamento.  
+O projeto consiste em um sistema de agendamento e de controle sobre as demandas de serviço numa barbearia, onde o administrador poderá consultar todas os agendamentos, visualizar datas, horários, além de poder baixar agendamentos caso tenha concluído e cadastrar seus Barbeiros com nome, idade, serviço e data de contratação. O sistema também dá a opção de entrar como cliente, no qual deverá ser efetuado um cadastro com informações de nome, e-mail e senha. A tela do cliente consiste em visualizar todos os agendamentos e avisos sobre horários de funcionamento do estabelecimento e tempo de serviço, terá também a opção de poder efetuar o Agendamento.
+
+OBS: Ao longo dos dias irei fazer melhorias e implementar novas técnicas de funcionalidade. 
 
 # Pacote, Bibliotecas e Métodos utilizados no desenvolvimento: 
 -NPM
