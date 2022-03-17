@@ -23,3 +23,5 @@ O layout em si foi construído do zero com base em pesquisas e idéias para melh
 - Cadastro Cliente
 - Home Cliente
 - Home Administrador
+<img width="960" alt="Sistema_BarbeariaLogin" src="https://user-images.githubusercontent.com/82072640/158815655-e216aa30-ec2a-4d94-bbfc-03cd24f6a910.png">
+
